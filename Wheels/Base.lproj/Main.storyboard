@@ -112,6 +112,23 @@
                     <view key="view" contentMode="scaleToFill" id="hbh-Uv-D0o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HsE-C9-CdV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="1" green="0.98144902649999999" blue="0.089121254699999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="On Demand" id="sto-Hp-hhf"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="Rex-1W-pcY" id="0bG-LP-jgs"/>
+                                </connections>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.98144902649999999" blue="0.089121254699999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
@@ -122,7 +139,7 @@
         <!--Plan Ahead View Controller-->
         <scene sceneID="FAu-xB-Vtf">
             <objects>
-                <viewController storyboardIdentifier="planAheadViewController" id="wXD-0p-mQU" customClass="PlanAheadViewController" customModule="Wheels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="planAheadViewController" id="wXD-0p-mQU" userLabel="Plan Ahead View Controller" customClass="PlanAheadViewController" customModule="Wheels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J90-NA-Eo8"/>
                         <viewControllerLayoutGuide type="bottom" id="HE6-fN-TEz"/>
@@ -130,12 +147,34 @@
                     <view key="view" contentMode="scaleToFill" id="fwk-5U-FtK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="km7-pF-zuo">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Scheduled" id="63N-tv-Vhs">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XFu-59-pnB"/>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="wXD-0p-mQU" id="hWE-WP-1ld"/>
+                                </connections>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Queue" id="zff-gm-f2D">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FBc-0P-lNt"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaK-0y-HmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2590" y="863"/>
+            <point key="canvasLocation" x="2604" y="870"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="oL1-R6-YKc">

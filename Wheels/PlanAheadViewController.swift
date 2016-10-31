@@ -8,8 +8,15 @@
 
 import UIKit
 
-class PlanAheadViewController: UIViewController {
+class PlanAheadViewController: UIViewController, UIBarPositioningDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    /**
+     * Set the navigation bar to extend under the status bar.
+     */
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.topAttached
     }
 }
