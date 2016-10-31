@@ -16,13 +16,13 @@
 		2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */; };
 		2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */; };
 		2049AAF31DC7CF8800B2713A /* NewScheduledRideRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAF21DC7CF8800B2713A /* NewScheduledRideRootViewController.swift */; };
+		2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */; };
 		20A763941DC69777000A776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763931DC69777000A776E /* AppDelegate.swift */; };
 		20A763991DC69777000A776E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A763971DC69777000A776E /* Main.storyboard */; };
 		20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */; };
 		20A7639E1DC69777000A776E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20A7639D1DC69777000A776E /* Assets.xcassets */; };
 		20A763A11DC69777000A776E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A7639F1DC69777000A776E /* LaunchScreen.storyboard */; };
 		20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763A81DC6C917000A776E /* LoginViewController.swift */; };
-		20A763B01DC6D018000A776E /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763AF1DC6D018000A776E /* MainPageViewController.swift */; };
 		20A763B21DC6DFDB000A776E /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B11DC6DFDB000A776E /* QueueViewController.swift */; };
 		20A763B41DC6DFF0000A776E /* OnDemandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */; };
 		20A763B61DC6E015000A776E /* PlanAheadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B51DC6E015000A776E /* PlanAheadViewController.swift */; };
@@ -38,6 +38,7 @@
 		2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+riderInDatabase.swift"; sourceTree = "<group>"; };
 		2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideTableViewController.swift; path = Wheels/NewScheduledRideTableViewController.swift; sourceTree = "<group>"; };
 		2049AAF21DC7CF8800B2713A /* NewScheduledRideRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideRootViewController.swift; path = Wheels/NewScheduledRideRootViewController.swift; sourceTree = "<group>"; };
+		2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainPageViewController.swift; path = Wheels/MainPageViewController.swift; sourceTree = "<group>"; };
 		20A763901DC69777000A776E /* Wheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A763931DC69777000A776E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20A763981DC69777000A776E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		20A763A01DC69777000A776E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20A763A21DC69777000A776E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20A763A81DC6C917000A776E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
-		20A763AF1DC6D018000A776E /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		20A763B11DC6DFDB000A776E /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueueViewController.swift; path = Wheels/QueueViewController.swift; sourceTree = "<group>"; };
 		20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnDemandViewController.swift; path = Wheels/OnDemandViewController.swift; sourceTree = "<group>"; };
 		20A763B51DC6E015000A776E /* PlanAheadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanAheadViewController.swift; path = Wheels/PlanAheadViewController.swift; sourceTree = "<group>"; };
@@ -144,12 +144,12 @@
 		20A763AE1DC6CE50000A776E /* Main Page */ = {
 			isa = PBXGroup;
 			children = (
-				20A763AF1DC6D018000A776E /* MainPageViewController.swift */,
 				20A763B11DC6DFDB000A776E /* QueueViewController.swift */,
 				20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */,
 				20A763B51DC6E015000A776E /* PlanAheadViewController.swift */,
 				2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */,
 				2049AAF21DC7CF8800B2713A /* NewScheduledRideRootViewController.swift */,
+				2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */,
 			);
 			name = "Main Page";
 			path = ..;
@@ -235,8 +235,8 @@
 				2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */,
 				2049AAF31DC7CF8800B2713A /* NewScheduledRideRootViewController.swift in Sources */,
 				2049AAD11DC7902E00B2713A /* StoryboardConstants.swift in Sources */,
-				20A763B01DC6D018000A776E /* MainPageViewController.swift in Sources */,
 				20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */,
+				2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */,
 				2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */,
 				2049AAE71DC7B69300B2713A /* Ride+CoreDataProperties.swift in Sources */,
 				2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */,
