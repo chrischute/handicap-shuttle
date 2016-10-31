@@ -9,7 +9,12 @@
 import UIKit
 
 class PlanAheadViewController: UIViewController, UIBarPositioningDelegate {
+    @IBOutlet weak var newScheduledRideButton: UIBarButtonItem!
     override func viewDidLoad() {
+        newScheduledRideButton.setTitleTextAttributes(
+            [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
+            for: UIControlState.normal)
+        
         super.viewDidLoad()
     }
     

@@ -159,6 +159,7 @@
                                 <items>
                                     <navigationItem title="Scheduled" id="63N-tv-Vhs">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XFu-59-pnB">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="ASu-bV-FLB" kind="show" id="wBS-3d-6Bg"/>
                                             </connections>
@@ -177,7 +178,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRk-pf-K3d" id="9IW-XN-ML7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fromAddress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgb-xa-O15">
@@ -250,6 +251,9 @@
                     <navigationItem key="navigationItem" title="Queue" id="zff-gm-f2D">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FBc-0P-lNt"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="newScheduledRideButton" destination="XFu-59-pnB" id="haE-oV-pis"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaK-0y-HmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -275,14 +279,17 @@
                             </containerView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tW9-gU-u7C">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="InY-Q5-dyF">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bEy-8Y-Z3A">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="bEy-8Y-Z3A">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="mK3-Cb-oed" kind="unwind" unwindAction="unwindCancelNewScheduledRideFrom:" id="SxK-ji-u4j"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fQN-QK-524">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="fQN-QK-524">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="mK3-Cb-oed" kind="unwind" unwindAction="unwindAddNewScheduledRideFrom:" id="N31-L7-R3m"/>
                                             </connections>
@@ -329,10 +336,10 @@
                             <tableViewSection headerTitle="Pickup and Dropoff" id="8KS-KO-cd3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="cnA-Ax-5yf">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="55"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cnA-Ax-5yf" id="zBj-Pd-UgK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pickup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T9z-QD-KCt">
@@ -351,10 +358,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="dHV-dv-BWn">
-                                        <rect key="frame" x="0.0" y="111" width="375" height="55"/>
+                                        <rect key="frame" x="0.0" y="110.5" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHV-dv-BWn" id="Rqw-Go-Zt8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Dropoff Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOj-bR-vaR">
@@ -377,10 +384,10 @@
                             <tableViewSection headerTitle="Date and Time" id="FPi-Af-HM9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="170" id="MK1-8T-Ca7">
-                                        <rect key="frame" x="0.0" y="223" width="375" height="170"/>
+                                        <rect key="frame" x="0.0" y="221.5" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MK1-8T-Ca7" id="TGg-xT-JiO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="SjG-yR-iJn">
@@ -403,10 +410,10 @@
                             <tableViewSection headerTitle="Accessibility" id="CLc-dU-hit">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="oG1-bP-lzI">
-                                        <rect key="frame" x="0.0" y="450" width="375" height="55"/>
+                                        <rect key="frame" x="0.0" y="447.5" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oG1-bP-lzI" id="jdg-Tf-N9G">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Needs Wheelchair-Accessible Van" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgl-it-iyB">

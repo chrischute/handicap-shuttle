@@ -15,6 +15,16 @@ class NewScheduledRideRootViewController: UIViewController, UIBarPositioningDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        doneButton.setTitleTextAttributes(
+            [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
+            for: UIControlState.normal)
+        
+        cancelButton.setTitleTextAttributes(
+            [NSFontAttributeName: UIFont(name: "Avenir-Medium", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
+            for: UIControlState.normal)
+        
+
         // Do any additional setup after loading the view.
     }
 
