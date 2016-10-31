@@ -9,16 +9,10 @@
 import UIKit
 
 class MainPageViewController: UIPageViewController, UIPageViewControllerDataSource {
-    private enum PageId {
-        case queue
-        case onDemand
-        case planAhead
-    };
-    
     private var pages: [UIViewController] =
-        [MainPageViewController.pageVC(with: PageId.queue),
-         MainPageViewController.pageVC(with: PageId.onDemand),
-         MainPageViewController.pageVC(with: PageId.planAhead)]
+        [MainPageViewController.pageVC(with: StoryboardConstants.queueViewControllerId),
+         MainPageViewController.pageVC(with: StoryboardConstants.onDemandViewControllerId),
+         MainPageViewController.pageVC(with: StoryboardConstants.planAheadViewControllerId)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +63,7 @@ class MainPageViewController: UIPageViewController, UIPageViewControllerDataSour
         return nil
     }
 
-    private class func pageVC(with id: PageId) -> UIViewController {
-        var idString = ""
-        switch (id) {
-        case .onDemand: idString = "onDemandViewController"
-        case .queue: idString = "queueViewController"
-        case .planAhead: idString = "planAheadViewController"
-        }
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: idString)
+    private class func pageVC(with id: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: id)
     }
 }

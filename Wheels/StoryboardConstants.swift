@@ -9,5 +9,8 @@
 import Foundation
 
 class StoryboardConstants {
-    static let LoginSegueId = "Login Segue"
+    static let loginSegueId = "Login Segue"
+    static let onDemandViewControllerId = "onDemandViewController"
+    static let queueViewControllerId = "queueViewController"
+    static let planAheadViewControllerId = "planAheadViewController"
 }

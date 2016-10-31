@@ -19,7 +19,9 @@ extension Rider {
     @NSManaged public var password: String?
 
     
-    /* Insert a rider with netId and password into the database. */
+    /**
+     * Insert a rider with netId and password into the database.
+     */
     class func riderInDatabase(from netId: String, with password: String, in moc: NSManagedObjectContext) -> Rider? {
         let request: NSFetchRequest<Rider> = Rider.fetchRequest()
         request.predicate = NSPredicate(format: "netId = %@", netId)
@@ -38,6 +40,7 @@ extension Rider {
         if let fetchedRiders = riders {
             if let existingRider = fetchedRiders.first {
                 // Rider already stored in database.
+                Debug.log("Found existing rider with netId \(netId)")
                 return existingRider
             } else {
                 // Rider not in database yet. Insert the rider.
