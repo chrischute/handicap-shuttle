@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainPageViewController.swift
 //  Wheels
 //
 //  Created by Christopher Chute on 10/30/16.
@@ -8,18 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainPageViewController: UIPageViewController, UIPageViewControllerDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    func viewController(at index: Int) -> ContentViewController {
+        if (index >= self.pageTitles.count) {
+            
+        }
+    }
 }
-
