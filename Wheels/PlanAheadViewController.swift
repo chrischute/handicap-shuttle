@@ -19,4 +19,20 @@ class PlanAheadViewController: UIViewController, UIBarPositioningDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
     }
+    
+    /**
+     * Unwind to the PlanAheadViewController after pressing 'done'. Add a new scheduled ride.
+     */
+    @IBAction func unwindAddNewScheduledRide(from segue: UIStoryboardSegue) {
+        // Done entering new ride. Save old
+    }
+    
+    /**
+     * Unwind to the PlanAheadViewController after pressing 'cancel'. Don't save anything.
+     */
+    @IBAction func unwindCancelNewScheduledRide(from segue: UIStoryboardSegue) {
+        // Cancel was pressed. Do nothing.
+    }
+    
+    
 }
