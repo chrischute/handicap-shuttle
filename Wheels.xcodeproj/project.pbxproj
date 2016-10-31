@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2049AAD11DC7902E00B2713A /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */; };
+		2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */; };
+		2049AADD1DC79A8300B2713A /* Rider+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AADC1DC79A8300B2713A /* Rider+CoreDataProperties.swift */; };
+		2049AADF1DC79C4B00B2713A /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AADE1DC79C4B00B2713A /* Debug.swift */; };
 		20A763941DC69777000A776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763931DC69777000A776E /* AppDelegate.swift */; };
 		20A763991DC69777000A776E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A763971DC69777000A776E /* Main.storyboard */; };
 		20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
+		2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2049AADC1DC79A8300B2713A /* Rider+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2049AADE1DC79C4B00B2713A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		20A763901DC69777000A776E /* Wheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A763931DC69777000A776E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20A763981DC69777000A776E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +53,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2049AACF1DC78CD700B2713A /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */,
+				2049AADC1DC79A8300B2713A /* Rider+CoreDataProperties.swift */,
+				20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		2049AAE01DC79C5500B2713A /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				2049AADE1DC79C4B00B2713A /* Debug.swift */,
+			);
+			name = Debug;
+			sourceTree = "<group>";
+		};
 		20A763871DC69777000A776E = {
 			isa = PBXGroup;
 			children = (
@@ -64,11 +90,12 @@
 		20A763921DC69777000A776E /* Wheels */ = {
 			isa = PBXGroup;
 			children = (
+				2049AACF1DC78CD700B2713A /* Core Data */,
 				20A763AA1DC6C924000A776E /* Login */,
 				20A763AE1DC6CE50000A776E /* Main Page */,
 				20A763971DC69777000A776E /* Main.storyboard */,
 				20A763AB1DC6C92E000A776E /* Supporting */,
-				20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */,
+				2049AAE01DC79C5500B2713A /* Debug */,
 			);
 			path = Wheels;
 			sourceTree = "<group>";
@@ -77,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				20A763A81DC6C917000A776E /* LoginViewController.swift */,
+				2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -179,10 +207,14 @@
 			files = (
 				20A763B41DC6DFF0000A776E /* OnDemandViewController.swift in Sources */,
 				20A763B21DC6DFDB000A776E /* QueueViewController.swift in Sources */,
+				2049AADF1DC79C4B00B2713A /* Debug.swift in Sources */,
+				2049AAD11DC7902E00B2713A /* StoryboardConstants.swift in Sources */,
 				20A763B01DC6D018000A776E /* MainPageViewController.swift in Sources */,
 				20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */,
+				2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */,
 				20A763941DC69777000A776E /* AppDelegate.swift in Sources */,
 				20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */,
+				2049AADD1DC79A8300B2713A /* Rider+CoreDataProperties.swift in Sources */,
 				20A763B61DC6E015000A776E /* PlanAheadViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +377,7 @@
 				20A763A71DC69777000A776E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
