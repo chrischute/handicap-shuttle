@@ -10,7 +10,10 @@ import Foundation
 
 class StoryboardConstants {
     /* Segues */
-    static let loginSegueId = "Login Segue"
+    static let loginSegueId = "loginSegue"
+    static let newScheduledRideSegueId = "newScheduledRideSegue"
+    static let embedTableViewControllerSegueId = "embedTableViewControllerSegue"
+    static let unwindDoneNewScheduledRideSegueId = "unwindDoneNewScheduledRideSegue"
 
     /* View Controllers */
     static let onDemandViewControllerId = "onDemandViewController"

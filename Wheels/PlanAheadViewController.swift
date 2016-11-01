@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlanAheadViewController: UIViewControllerWithRider, UIBarPositioningDelegate {
+class PlanAheadViewController: UIViewControllerWithRider, UIBarPositioningDelegate, NewScheduledRideReceiving {
     @IBOutlet weak var newScheduledRideButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -26,21 +26,33 @@ class PlanAheadViewController: UIViewControllerWithRider, UIBarPositioningDelega
         return UIBarPosition.topAttached
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardConstants.newScheduledRideSegueId {
+            if let dest = segue.destination as? NewScheduledRideRootViewController {
+                Debug.log("New Scheduled Ride segue to root view controller was called.")
+                dest.rideDataReceiver = self
+            }
+        }
+    }
+    
     /**
      * Unwind to the PlanAheadViewController after pressing 'done'. Add a new scheduled ride.
      */
-    @IBAction func unwindAddNewScheduledRide(from segue: UIStoryboardSegue) {
-        //if let src = segue.source as? NewScheduledRideRootViewController {
-            // TODO: Get the new scheduled ride information. Save in database.
-        //}
+    @IBAction func unwindDoneNewScheduledRide(from segue: UIStoryboardSegue) {
+        // TODO: Combine with the cancel segue.
     }
-    
+
     /**
-     * Unwind to the PlanAheadViewController after pressing 'cancel'. Don't save anything.
+     * Unwind to the PlanAheadViewController after pressing 'cancel'.
      */
     @IBAction func unwindCancelNewScheduledRide(from segue: UIStoryboardSegue) {
-        // Cancel was pressed. Do nothing.
+        // Do nothing.
     }
     
     
+    func receiveRide(from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool) {
+        Debug.log("->receiveRide in PAVC")
+        // Save the new ride in the database.
+        
+    }
 }

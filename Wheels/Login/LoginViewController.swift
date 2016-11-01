@@ -18,6 +18,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Dismiss the keyboard by tapping outside its bounds.
+        setKeyboardAutoHiding(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,12 +72,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             performSegue(withIdentifier: StoryboardConstants.loginSegueId, sender: self)
         }
         return true
-    }
-    
-    /**
-     * Make keyboard disappear when tapping outside of text field.
-     */
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 }
