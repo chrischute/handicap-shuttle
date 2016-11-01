@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-class PlanAheadViewController: UIViewControllerWithRider, UIBarPositioningDelegate, NewScheduledRideReceiving {
+class PlanAheadViewController: UIViewControllerWithRider, NSFetchedResultsControllerDelegate, UIBarPositioningDelegate, NewScheduledRideReceiving {
+    var fetchedResultsController: NSFetchedResultsController<Ride>!
     @IBOutlet weak var newScheduledRideButton: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         newScheduledRideButton.setTitleTextAttributes(
@@ -20,6 +23,34 @@ class PlanAheadViewController: UIViewControllerWithRider, UIBarPositioningDelega
     }
     
     /**
+     * NSFetchedResultsController for managing rides on Core Data.
+     */
+    func initializeFetchedResultsController() {
+        let ridesRequest: NSFetchRequest<Ride> = Ride.fetchRequest()
+        
+        // We request future rides associated with the rider that's logged in.
+        let currentDateAndTime = NSDate.init(timeIntervalSinceNow: 0)
+        ridesRequest.predicate = NSPredicate(format: "rider.netId == %@ and dateAndTime >= %@", rider.netId!, currentDateAndTime)
+        ridesRequest.sortDescriptors = [NSSortDescriptor(key: "dateAndTime", ascending: true)]
+
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: ridesRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: "rootCache")
+        self.fetchedResultsController.delegate = self
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch let error {
+            Debug.log("Error fetching in NSFetchedResultsController initialization: \(error)")
+        }
+    }
+    
+    /**
+     * Receive the data for a new scheduled ride. Add it to the database.
+     */
+    func receiveRide(from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool) {
+        // Save the new ride in the database.
+    }
+
+    /**
      * Set the navigation bar to extend under the status bar.
      */
     func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -29,30 +60,13 @@ class PlanAheadViewController: UIViewControllerWithRider, UIBarPositioningDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardConstants.newScheduledRideSegueId {
             if let dest = segue.destination as? NewScheduledRideRootViewController {
-                Debug.log("New Scheduled Ride segue to root view controller was called.")
                 dest.rideDataReceiver = self
             }
         }
     }
-    
-    /**
-     * Unwind to the PlanAheadViewController after pressing 'done'. Add a new scheduled ride.
-     */
-    @IBAction func unwindDoneNewScheduledRide(from segue: UIStoryboardSegue) {
-        // TODO: Combine with the cancel segue.
-    }
 
     /**
-     * Unwind to the PlanAheadViewController after pressing 'cancel'.
+     * Unwind to the PlanAheadViewController after pressing 'done'. Nothing to do here.
      */
-    @IBAction func unwindCancelNewScheduledRide(from segue: UIStoryboardSegue) {
-        // Do nothing.
-    }
-    
-    
-    func receiveRide(from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool) {
-        Debug.log("->receiveRide in PAVC")
-        // Save the new ride in the database.
-        
-    }
+    @IBAction func unwindDoneNewScheduledRide(from segue: UIStoryboardSegue) { }
 }

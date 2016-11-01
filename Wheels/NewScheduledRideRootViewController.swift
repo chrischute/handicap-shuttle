@@ -60,7 +60,6 @@ class NewScheduledRideRootViewController: UIViewController, UIBarPositioningDele
         // Set self as delegate to receive data about the new scheduled ride.
         if segue.identifier == StoryboardConstants.embedTableViewControllerSegueId {
             if let dest = segue.destination as? NewScheduledRideTableViewController {
-                Debug.log("Embed segue to table view controller was called.")
                 dest.rideDataReceiver = self
             }
         }
