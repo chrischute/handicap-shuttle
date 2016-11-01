@@ -315,6 +315,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="bEy-8Y-Z3A" id="hQU-kj-68C"/>
+                        <outlet property="containedSubview" destination="SZY-Sf-GR7" id="xln-Hy-HnM"/>
                         <outlet property="doneButton" destination="fQN-QK-524" id="mn5-zD-aKx"/>
                     </connections>
                 </viewController>

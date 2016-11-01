@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2006FF8C1DC8CEEB0094C668 /* UIViewControllerWithRider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF8B1DC8CEEB0094C668 /* UIViewControllerWithRider.swift */; };
+		2006FF911DC8D3640094C668 /* Ride+rideInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF901DC8D3640094C668 /* Ride+rideInDatabase.swift */; };
+		2006FF951DC8D90C0094C668 /* Ride+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF941DC8D90C0094C668 /* Ride+CoreDataProperties.swift */; };
 		2049AAD11DC7902E00B2713A /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */; };
 		2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */; };
 		2049AADD1DC79A8300B2713A /* Rider+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AADC1DC79A8300B2713A /* Rider+CoreDataProperties.swift */; };
 		2049AADF1DC79C4B00B2713A /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AADE1DC79C4B00B2713A /* Debug.swift */; };
 		2049AAE61DC7B69300B2713A /* Ride+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE31DC7B69300B2713A /* Ride+CoreDataClass.swift */; };
-		2049AAE71DC7B69300B2713A /* Ride+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE41DC7B69300B2713A /* Ride+CoreDataProperties.swift */; };
 		2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */; };
 		2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */; };
 		2049AAF31DC7CF8800B2713A /* NewScheduledRideRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAF21DC7CF8800B2713A /* NewScheduledRideRootViewController.swift */; };
@@ -29,12 +31,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2006FF8B1DC8CEEB0094C668 /* UIViewControllerWithRider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerWithRider.swift; path = Wheels/UIViewControllerWithRider.swift; sourceTree = "<group>"; };
+		2006FF901DC8D3640094C668 /* Ride+rideInDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ride+rideInDatabase.swift"; sourceTree = "<group>"; };
+		2006FF941DC8D90C0094C668 /* Ride+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ride+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
 		2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2049AADC1DC79A8300B2713A /* Rider+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2049AADE1DC79C4B00B2713A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		2049AAE31DC7B69300B2713A /* Ride+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ride+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2049AAE41DC7B69300B2713A /* Ride+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ride+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+riderInDatabase.swift"; sourceTree = "<group>"; };
 		2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideTableViewController.swift; path = Wheels/NewScheduledRideTableViewController.swift; sourceTree = "<group>"; };
 		2049AAF21DC7CF8800B2713A /* NewScheduledRideRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideRootViewController.swift; path = Wheels/NewScheduledRideRootViewController.swift; sourceTree = "<group>"; };
@@ -63,14 +67,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2049AACF1DC78CD700B2713A /* Core Data */ = {
+		2006FF8D1DC8D23C0094C668 /* Plan Ahead */ = {
+			isa = PBXGroup;
+			children = (
+				20A763B51DC6E015000A776E /* PlanAheadViewController.swift */,
+				2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */,
+				2049AAF21DC7CF8800B2713A /* NewScheduledRideRootViewController.swift */,
+			);
+			name = "Plan Ahead";
+			sourceTree = "<group>";
+		};
+		2006FF8E1DC8D2470094C668 /* On Demand */ = {
+			isa = PBXGroup;
+			children = (
+				20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */,
+			);
+			name = "On Demand";
+			sourceTree = "<group>";
+		};
+		2006FF8F1DC8D24F0094C668 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				20A763B11DC6DFDB000A776E /* QueueViewController.swift */,
+			);
+			name = Queue;
+			sourceTree = "<group>";
+		};
+		2006FF921DC8D3980094C668 /* Ride */ = {
 			isa = PBXGroup;
 			children = (
 				2049AAE31DC7B69300B2713A /* Ride+CoreDataClass.swift */,
-				2049AAE41DC7B69300B2713A /* Ride+CoreDataProperties.swift */,
+				2006FF941DC8D90C0094C668 /* Ride+CoreDataProperties.swift */,
+				2006FF901DC8D3640094C668 /* Ride+rideInDatabase.swift */,
+			);
+			name = Ride;
+			sourceTree = "<group>";
+		};
+		2006FF931DC8D39E0094C668 /* Rider */ = {
+			isa = PBXGroup;
+			children = (
 				2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */,
 				2049AADC1DC79A8300B2713A /* Rider+CoreDataProperties.swift */,
 				2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */,
+			);
+			name = Rider;
+			sourceTree = "<group>";
+		};
+		2049AACF1DC78CD700B2713A /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2006FF921DC8D3980094C668 /* Ride */,
+				2006FF931DC8D39E0094C668 /* Rider */,
 				20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */,
 			);
 			name = "Core Data";
@@ -144,12 +191,11 @@
 		20A763AE1DC6CE50000A776E /* Main Page */ = {
 			isa = PBXGroup;
 			children = (
-				20A763B11DC6DFDB000A776E /* QueueViewController.swift */,
-				20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */,
-				20A763B51DC6E015000A776E /* PlanAheadViewController.swift */,
-				2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */,
-				2049AAF21DC7CF8800B2713A /* NewScheduledRideRootViewController.swift */,
+				2006FF8F1DC8D24F0094C668 /* Queue */,
+				2006FF8E1DC8D2470094C668 /* On Demand */,
+				2006FF8D1DC8D23C0094C668 /* Plan Ahead */,
 				2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */,
+				2006FF8B1DC8CEEB0094C668 /* UIViewControllerWithRider.swift */,
 			);
 			name = "Main Page";
 			path = ..;
@@ -234,11 +280,13 @@
 				2049AAE61DC7B69300B2713A /* Ride+CoreDataClass.swift in Sources */,
 				2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */,
 				2049AAF31DC7CF8800B2713A /* NewScheduledRideRootViewController.swift in Sources */,
+				2006FF951DC8D90C0094C668 /* Ride+CoreDataProperties.swift in Sources */,
 				2049AAD11DC7902E00B2713A /* StoryboardConstants.swift in Sources */,
+				2006FF911DC8D3640094C668 /* Ride+rideInDatabase.swift in Sources */,
 				20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */,
 				2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */,
 				2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */,
-				2049AAE71DC7B69300B2713A /* Ride+CoreDataProperties.swift in Sources */,
+				2006FF8C1DC8CEEB0094C668 /* UIViewControllerWithRider.swift in Sources */,
 				2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */,
 				20A763941DC69777000A776E /* AppDelegate.swift in Sources */,
 				20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */,

@@ -3,6 +3,7 @@
     <entity name="Ride" representedClassName="Ride" syncable="YES">
         <attribute name="dateAndTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="fromAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="needsWheelchair" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="toAddress" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="rider" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Rider" inverseName="scheduledRides" inverseEntity="Rider" syncable="YES"/>
     </entity>
@@ -12,7 +13,7 @@
         <relationship name="scheduledRides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ride" inverseName="rider" inverseEntity="Ride" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Ride" positionX="0" positionY="63" width="128" height="118"/>
         <element name="Rider" positionX="-216" positionY="72" width="128" height="88"/>
-        <element name="Ride" positionX="0" positionY="63" width="128" height="103"/>
     </elements>
 </model>

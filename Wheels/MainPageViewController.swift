@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class MainPageViewController: UIPageViewController, UIPageViewControllerDataSource {
-    private var pages: [UIViewController] =
-        [MainPageViewController.pageVC(with: StoryboardConstants.queueViewControllerId),
-         MainPageViewController.pageVC(with: StoryboardConstants.onDemandViewControllerId),
-         MainPageViewController.pageVC(with: StoryboardConstants.planAheadViewControllerId)]
+    var rider: Rider!
+    var moc: NSManagedObjectContext!
+    private var pages: [UIViewControllerWithRider]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dataSource = self
+        
+        pages = [pageVC(with: StoryboardConstants.queueViewControllerId),
+                 pageVC(with: StoryboardConstants.onDemandViewControllerId),
+                 pageVC(with: StoryboardConstants.planAheadViewControllerId)]
+        
         if let firstPageToDisplay = pages[1] as? OnDemandViewController {
             setViewControllers([firstPageToDisplay],
                                direction: .forward,
@@ -44,7 +49,8 @@ class MainPageViewController: UIPageViewController, UIPageViewControllerDataSour
     
     /* UIPageViewControllerDataSource Protocol */
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let vcIndex = pages.index(of: viewController) {
+        let vc = viewController as! UIViewControllerWithRider
+        if let vcIndex = pages.index(of: vc) {
             if vcIndex > 0 {
                 return pages[vcIndex - 1]
             }
@@ -54,7 +60,8 @@ class MainPageViewController: UIPageViewController, UIPageViewControllerDataSour
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let vcIndex = pages.index(of: viewController) {
+        let vc = viewController as! UIViewControllerWithRider
+        if let vcIndex = pages.index(of: vc) {
             if vcIndex < pages.count - 1 {
                 return pages[vcIndex + 1]
             }
@@ -63,7 +70,17 @@ class MainPageViewController: UIPageViewController, UIPageViewControllerDataSour
         return nil
     }
     
-    private class func pageVC(with id: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: id)
+    /**
+     * Initialize and return one of the main pages. Each must be given the rider
+     * and the NSManagedObject context against which to query for rides.
+     */
+    private func pageVC(with id: String) -> UIViewControllerWithRider {
+        let rvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: id) as! UIViewControllerWithRider
+        rvc.rider = self.rider
+        rvc.moc = self.moc
+        
+        Debug.log("Initialized VC with ID \(id) and rider \(rvc.rider.netId!)")
+        
+        return rvc
     }
 }

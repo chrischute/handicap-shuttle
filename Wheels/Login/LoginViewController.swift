@@ -26,9 +26,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardConstants.loginSegueId {
+            let dest = segue.destination as! MainPageViewController
             // Save the entered netId and password.
             if let netId = netIdTextField.text, let password = passwordTextField.text {
-                _ = Rider.riderInDatabase(from: netId, with: password, in: moc)
+                dest.rider = Rider.riderInDatabase(from: netId, with: password, in: moc)
+                dest.moc = moc
             }
         }
     }

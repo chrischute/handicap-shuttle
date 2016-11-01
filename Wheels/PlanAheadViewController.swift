@@ -8,8 +8,9 @@
 
 import UIKit
 
-class PlanAheadViewController: UIViewController, UIBarPositioningDelegate {
+class PlanAheadViewController: UIViewControllerWithRider, UIBarPositioningDelegate {
     @IBOutlet weak var newScheduledRideButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         newScheduledRideButton.setTitleTextAttributes(
             [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
@@ -29,7 +30,9 @@ class PlanAheadViewController: UIViewController, UIBarPositioningDelegate {
      * Unwind to the PlanAheadViewController after pressing 'done'. Add a new scheduled ride.
      */
     @IBAction func unwindAddNewScheduledRide(from segue: UIStoryboardSegue) {
-        // Done entering new ride. Save old
+        //if let src = segue.source as? NewScheduledRideRootViewController {
+            // TODO: Get the new scheduled ride information. Save in database.
+        //}
     }
     
     /**

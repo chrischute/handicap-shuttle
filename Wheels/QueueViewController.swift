@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QueueViewController: UIViewController {
+class QueueViewController: UIViewControllerWithRider {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

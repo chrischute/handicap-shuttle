@@ -2,7 +2,7 @@
 //  Ride+CoreDataProperties.swift
 //  Wheels
 //
-//  Created by Christopher Chute on 10/31/16.
+//  Created by Christopher Chute on 11/1/16.
 //  Copyright © 2016 Christopher Chute. All rights reserved.
 //
 
@@ -16,9 +16,10 @@ extension Ride {
         return NSFetchRequest<Ride>(entityName: "Ride");
     }
 
+    @NSManaged public var dateAndTime: NSDate?
     @NSManaged public var fromAddress: String?
     @NSManaged public var toAddress: String?
-    @NSManaged public var dateAndTime: NSDate?
+    @NSManaged public var needsWheelchair: Bool
     @NSManaged public var rider: Rider?
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnDemandViewController: UIViewController, UIBarPositioningDelegate {
+class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

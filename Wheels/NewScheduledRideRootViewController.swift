@@ -9,23 +9,20 @@
 import UIKit
 
 class NewScheduledRideRootViewController: UIViewController, UIBarPositioningDelegate {
+    @IBOutlet weak var containedSubview: UIView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        // Make fonts of 'Cancel' and 'Done' match rest of app (Avenir).
         doneButton.setTitleTextAttributes(
             [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
             for: UIControlState.normal)
-        
         cancelButton.setTitleTextAttributes(
             [NSFontAttributeName: UIFont(name: "Avenir-Medium", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
             for: UIControlState.normal)
-        
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +30,14 @@ class NewScheduledRideRootViewController: UIViewController, UIBarPositioningDele
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+     * Set the navigation bar to extend under the status bar.
+     */
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
     }
+    
+    
     
     /*
     // MARK: - Navigation

@@ -17,12 +17,4 @@ class NewScheduledRideTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    /**
-     * UIPickerViewDataSource implementation.
-     */
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        // One component, since this is a binary selector (wheelchair or no wheelchair).
-        return 1
-    }
 }
