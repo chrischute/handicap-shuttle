@@ -9,15 +9,17 @@
 import UIKit
 import CoreData
 
-class PlanAheadViewController: UIViewControllerWithRider, NSFetchedResultsControllerDelegate, UIBarPositioningDelegate, NewScheduledRideReceiving {
+class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIBarPositioningDelegate, NewScheduledRideReceiving {
     var fetchedResultsController: NSFetchedResultsController<Ride>!
     @IBOutlet weak var newScheduledRideButton: UIBarButtonItem!
-    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         newScheduledRideButton.setTitleTextAttributes(
             [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
             for: UIControlState.normal)
+        
+        initializeFetchedResultsController()
         
         super.viewDidLoad()
     }
@@ -48,6 +50,74 @@ class PlanAheadViewController: UIViewControllerWithRider, NSFetchedResultsContro
      */
     func receiveRide(from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool) {
         // Save the new ride in the database.
+    }
+    
+    /**
+     * UITableViewDataSource implementation.
+     */
+    private func configureCell(cell: ScheduledRideTableViewCell, indexPath: IndexPath) {
+        // TODO: Date formatting.
+        let ride = fetchedResultsController.object(at: indexPath)
+        cell.toAddressLabel.text = ride.toAddress
+        cell.fromAddressLabel.text = ride.fromAddress
+        cell.dateAndTimeLabel.text = ride.dateAndTime?.description
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardConstants.scheduledRideCellId, for: indexPath)
+        if let rideCell = cell as? ScheduledRideTableViewCell {
+            configureCell(cell: rideCell, indexPath: indexPath)
+            return rideCell
+        }
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = fetchedResultsController.sections {
+            return sections[section].numberOfObjects
+        }
+        Debug.log("Failed to read section \(section) from fetchedResultsController")
+        return 0
+    }
+    
+    /**
+     * NSFetchedResultsControllerDelegate implementation.
+     * Let the FRC tell us when to update the table view.
+     */
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet([sectionIndex]), with: .fade)
+        case .delete:
+            tableView.deleteSections(IndexSet([sectionIndex]), with: .fade)
+        default:
+            break
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            configureCell(cell: tableView.cellForRow(at: indexPath!) as! ScheduledRideTableViewCell, indexPath: indexPath!)
+        case .move:
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
 
     /**

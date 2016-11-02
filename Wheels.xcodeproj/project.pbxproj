@@ -21,6 +21,7 @@
 		2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */; };
 		2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */; };
 		2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */; };
+		208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */; };
 		20A763941DC69777000A776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763931DC69777000A776E /* AppDelegate.swift */; };
 		20A763991DC69777000A776E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A763971DC69777000A776E /* Main.storyboard */; };
 		20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */; };
@@ -47,6 +48,7 @@
 		2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+riderInDatabase.swift"; sourceTree = "<group>"; };
 		2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideTableViewController.swift; path = Wheels/NewScheduledRideTableViewController.swift; sourceTree = "<group>"; };
 		2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainPageViewController.swift; path = Wheels/MainPageViewController.swift; sourceTree = "<group>"; };
+		208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduledRideTableViewCell.swift; path = Wheels/ScheduledRideTableViewCell.swift; sourceTree = "<group>"; };
 		20A763901DC69777000A776E /* Wheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A763931DC69777000A776E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20A763981DC69777000A776E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				20A763B51DC6E015000A776E /* PlanAheadViewController.swift */,
 				2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */,
 				2006FF981DC916BD0094C668 /* NewScheduledRideReceiving.swift */,
+				208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */,
 			);
 			name = "Plan Ahead";
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				20A763941DC69777000A776E /* AppDelegate.swift in Sources */,
 				20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */,
 				2049AADD1DC79A8300B2713A /* Rider+CoreDataProperties.swift in Sources */,
+				208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */,
 				2006FF9D1DC9335F0094C668 /* UIViewController+dismissKeyboard.swift in Sources */,
 				20A763B61DC6E015000A776E /* PlanAheadViewController.swift in Sources */,
 			);

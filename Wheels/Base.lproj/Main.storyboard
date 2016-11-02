@@ -229,11 +229,14 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateAndTimeLabel" destination="8V8-YT-FqC" id="g0l-55-CT1"/>
-                                            <outlet property="fromAddressLabel" destination="wgb-xa-O15" id="wxy-Xi-5sU"/>
-                                            <outlet property="toAddressLabel" destination="A0L-3y-kB0" id="YeT-7S-9h6"/>
+                                            <outlet property="fromAddressLabel" destination="wgb-xa-O15" id="07F-BH-Yc4"/>
+                                            <outlet property="toAddressLabel" destination="A0L-3y-kB0" id="FhZ-te-z1v"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wXD-0p-mQU" id="SU0-KZ-0Ii"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -253,6 +256,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="newScheduledRideButton" destination="XFu-59-pnB" id="haE-oV-pis"/>
+                        <outlet property="tableView" destination="G72-rt-sch" id="L8G-6r-GVX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaK-0y-HmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
