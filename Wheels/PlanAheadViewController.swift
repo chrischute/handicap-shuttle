@@ -68,11 +68,13 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
      * UITableViewDataSource implementation.
      */
     private func configureCell(cell: ScheduledRideTableViewCell, indexPath: IndexPath) {
-        // TODO: Date formatting.
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a' on 'EEEE, MM/dd/yy"
+        
         let ride = fetchedResultsController.object(at: indexPath)
         cell.toAddressLabel.text = ride.toAddress
         cell.fromAddressLabel.text = ride.fromAddress
-        cell.dateAndTimeLabel.text = ride.dateAndTime?.description
+        cell.dateAndTimeLabel.text = formatter.string(from: ride.dateAndTime! as Date)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
