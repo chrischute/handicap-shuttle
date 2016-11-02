@@ -49,7 +49,19 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
      * Receive the data for a new scheduled ride. Add it to the database.
      */
     func receiveRide(from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool) {
-        // Save the new ride in the database.
+        if let ride = NSEntityDescription.insertNewObject(forEntityName: "Ride", into: moc) as? Ride {
+            ride.fromAddress = src
+            ride.toAddress = dest
+            ride.dateAndTime = dateAndTime
+            ride.needsWheelchair = needsWheelchair
+            ride.rider = self.rider
+            
+            do {
+                try moc.save()
+            } catch let error {
+                Debug.log("Error inserting new ride: \(error)")
+            }
+        }
     }
     
     /**
