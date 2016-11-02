@@ -31,8 +31,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         let ridesRequest: NSFetchRequest<Ride> = Ride.fetchRequest()
         
         // We request future rides associated with the rider that's logged in.
-        let currentDateAndTime = NSDate.init(timeIntervalSinceNow: 0)
-        ridesRequest.predicate = NSPredicate(format: "rider.netId == %@ and dateAndTime >= %@", rider.netId!, currentDateAndTime)
+        ridesRequest.predicate = NSPredicate(format: "rider.netId == %@ and dateAndTime > now()", rider.netId!)
         ridesRequest.sortDescriptors = [NSSortDescriptor(key: "dateAndTime", ascending: true)]
 
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: ridesRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: "rootCache")
@@ -68,13 +67,10 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
      * UITableViewDataSource implementation.
      */
     private func configureCell(cell: ScheduledRideTableViewCell, indexPath: IndexPath) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a' on 'EEEE, MM/dd/yy"
-        
         let ride = fetchedResultsController.object(at: indexPath)
         cell.toAddressLabel.text = ride.toAddress
         cell.fromAddressLabel.text = ride.fromAddress
-        cell.dateAndTimeLabel.text = formatter.string(from: ride.dateAndTime! as Date)
+        cell.dateAndTimeLabel.text = StoryboardConstants.standardDateFormatter.string(from: ride.dateAndTime! as Date)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,6 +80,15 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
             return rideCell
         }
         return cell
+    }
+    
+    /**
+     * Ability to view and edit rides.
+     */
+    // View ride details when a row is selected.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Debug.log("Row selected in table view.")
+        performSegue(withIdentifier: StoryboardConstants.editScheduledRideSegueId, sender: self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -144,7 +149,22 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardConstants.newScheduledRideSegueId {
             if let dest = segue.destination as? NewScheduledRideRootViewController {
+                // Tell editing view controller to pass any changes back here.
                 dest.rideDataReceiver = self
+            }
+        } else if segue.identifier == StoryboardConstants.editScheduledRideSegueId {
+            if let dest = segue.destination as? EditScheduledRideViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    // Pass ride information to editing view controller.
+                    let selectedRide = fetchedResultsController.object(at: indexPath)
+                    dest.fromAddress = selectedRide.fromAddress!
+                    dest.toAddress = selectedRide.toAddress!
+                    dest.dateAndTime = selectedRide.dateAndTime!
+                    dest.needsWheelchair = selectedRide.needsWheelchair
+                    
+                    // Tell editing view controller to pass any changes back here.
+                    dest.rideDataReceiver = self
+                }
             }
         }
     }

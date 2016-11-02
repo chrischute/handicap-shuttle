@@ -21,6 +21,8 @@
 		2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */; };
 		2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */; };
 		2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */; };
+		207AD2D21DCA533900EF6465 /* EditScheduledRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */; };
+		207AD2D51DCA55D800EF6465 /* EditScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */; };
 		208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */; };
 		20A763941DC69777000A776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763931DC69777000A776E /* AppDelegate.swift */; };
 		20A763991DC69777000A776E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A763971DC69777000A776E /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+riderInDatabase.swift"; sourceTree = "<group>"; };
 		2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideTableViewController.swift; path = Wheels/NewScheduledRideTableViewController.swift; sourceTree = "<group>"; };
 		2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainPageViewController.swift; path = Wheels/MainPageViewController.swift; sourceTree = "<group>"; };
+		207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditScheduledRideViewController.swift; path = Wheels/EditScheduledRideViewController.swift; sourceTree = "<group>"; };
+		207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditScheduledRideTableViewController.swift; path = Wheels/EditScheduledRideTableViewController.swift; sourceTree = "<group>"; };
 		208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduledRideTableViewCell.swift; path = Wheels/ScheduledRideTableViewCell.swift; sourceTree = "<group>"; };
 		20A763901DC69777000A776E /* Wheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A763931DC69777000A776E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,10 +80,9 @@
 		2006FF8D1DC8D23C0094C668 /* Plan Ahead */ = {
 			isa = PBXGroup;
 			children = (
-				2006FF9A1DC922040094C668 /* NewScheduledRideRootViewController.swift */,
+				207AD2D01DCA52FD00EF6465 /* Add Scheduled Ride */,
+				207AD2D31DCA534300EF6465 /* Edit Scheduled Ride */,
 				20A763B51DC6E015000A776E /* PlanAheadViewController.swift */,
-				2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */,
-				2006FF981DC916BD0094C668 /* NewScheduledRideReceiving.swift */,
 				208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */,
 			);
 			name = "Plan Ahead";
@@ -146,6 +149,25 @@
 				2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		207AD2D01DCA52FD00EF6465 /* Add Scheduled Ride */ = {
+			isa = PBXGroup;
+			children = (
+				2006FF9A1DC922040094C668 /* NewScheduledRideRootViewController.swift */,
+				2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */,
+				2006FF981DC916BD0094C668 /* NewScheduledRideReceiving.swift */,
+			);
+			name = "Add Scheduled Ride";
+			sourceTree = "<group>";
+		};
+		207AD2D31DCA534300EF6465 /* Edit Scheduled Ride */ = {
+			isa = PBXGroup;
+			children = (
+				207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */,
+				207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */,
+			);
+			name = "Edit Scheduled Ride";
 			sourceTree = "<group>";
 		};
 		20A763871DC69777000A776E = {
@@ -287,6 +309,7 @@
 				20A763B21DC6DFDB000A776E /* QueueViewController.swift in Sources */,
 				2049AADF1DC79C4B00B2713A /* Debug.swift in Sources */,
 				2006FF9B1DC922040094C668 /* NewScheduledRideRootViewController.swift in Sources */,
+				207AD2D21DCA533900EF6465 /* EditScheduledRideViewController.swift in Sources */,
 				2049AAE61DC7B69300B2713A /* Ride+CoreDataClass.swift in Sources */,
 				2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */,
 				2006FF951DC8D90C0094C668 /* Ride+CoreDataProperties.swift in Sources */,
@@ -296,6 +319,7 @@
 				2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */,
 				2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */,
 				2006FF8C1DC8CEEB0094C668 /* UIViewControllerWithRider.swift in Sources */,
+				207AD2D51DCA55D800EF6465 /* EditScheduledRideTableViewController.swift in Sources */,
 				2006FF991DC916BD0094C668 /* NewScheduledRideReceiving.swift in Sources */,
 				2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */,
 				20A763941DC69777000A776E /* AppDelegate.swift in Sources */,

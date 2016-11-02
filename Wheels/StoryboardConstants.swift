@@ -13,7 +13,10 @@ class StoryboardConstants {
     static let loginSegueId = "loginSegue"
     static let newScheduledRideSegueId = "newScheduledRideSegue"
     static let embedTableViewControllerSegueId = "embedTableViewControllerSegue"
+    static let embedEditRideTableViewSegueId = "embedEditRideTableViewSegue"
+    static let editScheduledRideSegueId = "editScheduledRideSegue"
     static let unwindDoneNewScheduledRideSegueId = "unwindDoneNewScheduledRideSegue"
+    static let unwindEditScheduledRideSegueId = "unwindEditScheduledRideSegue"
 
     /* View Controllers */
     static let onDemandViewControllerId = "onDemandViewController"
@@ -22,4 +25,11 @@ class StoryboardConstants {
 
     /* Table View Prototype Cells */
     static let scheduledRideCellId = "scheduledRideCell"
+    
+    /* Date and Time Formatting */
+    static let standardDateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "h:mm a' on 'EEEE, MM/dd/yy"
+        return df
+    }()
 }
