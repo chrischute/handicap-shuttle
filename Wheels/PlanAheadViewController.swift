@@ -24,9 +24,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         super.viewDidLoad()
     }
     
-    /**
-     * NSFetchedResultsController for managing rides on Core Data.
-     */
+    // MARK: NSFetchedResultsController for managing rides on Core Data.
     func initializeFetchedResultsController() {
         let ridesRequest: NSFetchRequest<Ride> = Ride.fetchRequest()
         
@@ -44,9 +42,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         }
     }
     
-    /**
-     * Receive the data for a new scheduled ride. Add it to the database.
-     */
+    // MARK: Receive the data for a new scheduled ride. Add it to the database.
     func receiveRide(from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool) {
         if let ride = NSEntityDescription.insertNewObject(forEntityName: "Ride", into: moc) as? Ride {
             ride.fromAddress = src
@@ -63,9 +59,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         }
     }
     
-    /**
-     * UITableViewDataSource implementation.
-     */
+    // MARK: UITableViewDataSource implementation.
     private func configureCell(cell: ScheduledRideTableViewCell, indexPath: IndexPath) {
         let ride = fetchedResultsController.object(at: indexPath)
         cell.toAddressLabel.text = ride.toAddress
@@ -82,9 +76,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         return cell
     }
     
-    /**
-     * Ability to view and edit rides.
-     */
+    // MARK: Selecting rows pulls up edit view.
     // View ride details when a row is selected.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Debug.log("Row selected in table view.")
@@ -103,10 +95,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         return 0
     }
     
-    /**
-     * NSFetchedResultsControllerDelegate implementation.
-     * Let the FRC tell us when to update the table view.
-     */
+    // MARK: NSFetchedResultsControllerDelegate implementation.
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -139,9 +128,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         tableView.endUpdates()
     }
 
-    /**
-     * Set the navigation bar to extend under the status bar.
-     */
+    // Set the navigation bar to extend under the status bar.
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
     }
@@ -169,8 +156,8 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         }
     }
 
-    /**
-     * Unwind to the PlanAheadViewController after pressing 'done'. Nothing to do here.
-     */
-    @IBAction func unwindDoneNewScheduledRide(from segue: UIStoryboardSegue) { }
+    // Unwind to the PlanAheadViewController after pressing 'done'.
+    @IBAction func unwindDoneNewScheduledRide(from segue: UIStoryboardSegue) {
+        // Do nothing.
+    }
 }
