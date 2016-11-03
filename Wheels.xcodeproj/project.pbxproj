@@ -20,6 +20,7 @@
 		2049AAE61DC7B69300B2713A /* Ride+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE31DC7B69300B2713A /* Ride+CoreDataClass.swift */; };
 		2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */; };
 		2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */; };
+		2071FAF61DCABACA0002810A /* RideCancellationReceiving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071FAF51DCABACA0002810A /* RideCancellationReceiving.swift */; };
 		2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */; };
 		207AD2D21DCA533900EF6465 /* EditScheduledRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */; };
 		207AD2D51DCA55D800EF6465 /* EditScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */; };
@@ -49,6 +50,7 @@
 		2049AAE31DC7B69300B2713A /* Ride+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ride+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2049AAE91DC7B76500B2713A /* Rider+riderInDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+riderInDatabase.swift"; sourceTree = "<group>"; };
 		2049AAF01DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideTableViewController.swift; path = Wheels/NewScheduledRideTableViewController.swift; sourceTree = "<group>"; };
+		2071FAF51DCABACA0002810A /* RideCancellationReceiving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RideCancellationReceiving.swift; path = Wheels/RideCancellationReceiving.swift; sourceTree = "<group>"; };
 		2073172A1DC7E073000BA8E0 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainPageViewController.swift; path = Wheels/MainPageViewController.swift; sourceTree = "<group>"; };
 		207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditScheduledRideViewController.swift; path = Wheels/EditScheduledRideViewController.swift; sourceTree = "<group>"; };
 		207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditScheduledRideTableViewController.swift; path = Wheels/EditScheduledRideTableViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */,
 				207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */,
+				2071FAF51DCABACA0002810A /* RideCancellationReceiving.swift */,
 			);
 			name = "Edit Scheduled Ride";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */,
 				2006FF9D1DC9335F0094C668 /* UIViewController+dismissKeyboard.swift in Sources */,
 				20A763B61DC6E015000A776E /* PlanAheadViewController.swift in Sources */,
+				2071FAF61DCABACA0002810A /* RideCancellationReceiving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

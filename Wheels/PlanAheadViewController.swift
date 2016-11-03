@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIBarPositioningDelegate, NewScheduledRideReceiving {
+class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIBarPositioningDelegate, NewScheduledRideReceiving, RideCancellationReceiving {
     var fetchedResultsController: NSFetchedResultsController<Ride>!
     @IBOutlet weak var newScheduledRideButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -32,7 +32,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         ridesRequest.predicate = NSPredicate(format: "rider.netId == %@ and dateAndTime > now()", rider.netId!)
         ridesRequest.sortDescriptors = [NSSortDescriptor(key: "dateAndTime", ascending: true)]
 
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: ridesRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: "rootCache")
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: ridesRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
         
         do {
@@ -95,6 +95,15 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         return 0
     }
     
+    func cancelRide() {
+        // Delete the ride that was just selected.
+        if let indexPath = tableView.indexPathForSelectedRow {
+            moc.delete(fetchedResultsController.object(at: indexPath))
+        } else {
+            Debug.log("No selected row when trying to delete a ride.")
+        }
+    }
+    
     // MARK: NSFetchedResultsControllerDelegate implementation.
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -150,7 +159,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
                     dest.needsWheelchair = selectedRide.needsWheelchair
                     
                     // Tell editing view controller to pass any changes back here.
-                    dest.rideDataReceiver = self
+                    dest.rideCancellationReceiver = self
                 }
             }
         }
