@@ -21,7 +21,23 @@ class EditScheduledRideViewController: UIViewController, UIBarPositioningDelegat
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         // Unwind to main schedule.
-        performSegue(withIdentifier: StoryboardConstants.unwindEditScheduledRideSegueId, sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: StoryboardConstants.unwindEditScheduledRideSegueId, sender: self)
+        }
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        // Display action sheet asking user to confirm the ride cancellation.
+        let cancelController = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .actionSheet)
+        let confirmCancelAction = UIAlertAction(title: "Yes, Cancel Ride", style: .destructive, handler: {
+            (alert: UIAlertAction!) -> Void in self.cancelRide()
+        })
+        let denyCancelAction = UIAlertAction(title: "No, Don't Cancel Ride", style: .cancel, handler: nil)
+        
+        cancelController.addAction(confirmCancelAction)
+        cancelController.addAction(denyCancelAction)
+        
+        self.present(cancelController, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -43,6 +59,7 @@ class EditScheduledRideViewController: UIViewController, UIBarPositioningDelegat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Pass information to the embedded table view for display.
         if segue.identifier == StoryboardConstants.embedEditRideTableViewSegueId {
             if let dest = segue.destination as? EditScheduledRideTableViewController {
                 dest.fromAddress = self.fromAddress
@@ -58,17 +75,8 @@ class EditScheduledRideViewController: UIViewController, UIBarPositioningDelegat
     func cancelRide() {
         rideCancellationReceiver.cancelRide()
         
-        performSegue(withIdentifier: StoryboardConstants.unwindEditScheduledRideSegueId, sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: StoryboardConstants.unwindEditScheduledRideSegueId, sender: self)
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

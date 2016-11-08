@@ -14,9 +14,7 @@ class EditScheduledRideTableViewController: UITableViewController {
     @IBOutlet weak var dateAndTimeLabel: UILabel!
     @IBOutlet weak var needsWheelchairLabel: UILabel!
     
-    @IBAction func cancelRideButtonPressed(_ sender: UIButton) {
-        rideCancellationReceiver.cancelRide()
-    }
+
     var fromAddress = ""
     var toAddress = ""
     var dateString = ""

@@ -14,7 +14,7 @@ class Debug {
     
     class func log(_ str: String) {
         if Debug.is_debug_build {
-            print("Error: " + str)
+            print("Log: " + str)
         }
     }
 }

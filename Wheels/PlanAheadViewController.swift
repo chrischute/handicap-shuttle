@@ -61,10 +61,13 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
     
     // MARK: UITableViewDataSource implementation.
     private func configureCell(cell: ScheduledRideTableViewCell, indexPath: IndexPath) {
+        // Fill the cell with ride information.
         let ride = fetchedResultsController.object(at: indexPath)
         cell.toAddressLabel.text = ride.toAddress
         cell.fromAddressLabel.text = ride.fromAddress
         cell.dateAndTimeLabel.text = StoryboardConstants.standardDateFormatter.string(from: ride.dateAndTime! as Date)
+        
+        // Style the cell.
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,7 +83,9 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
     // View ride details when a row is selected.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Debug.log("Row selected in table view.")
-        performSegue(withIdentifier: StoryboardConstants.editScheduledRideSegueId, sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: StoryboardConstants.editScheduledRideSegueId, sender: self)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
