@@ -7,8 +7,23 @@
 //
 
 import UIKit
+import MapKit
 
-class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegate {
+class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegate, MKMapViewDelegate {
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.mapType = .standard
+            mapView.delegate = self
+            
+            let initialMapCenter = CLLocationCoordinate2DMake(StoryboardConstants.sterlingMemorialLibraryLatitude,
+                                                              StoryboardConstants.sterlingMemorialLibraryLongitude)
+            let initialMapSpan = MKCoordinateSpanMake(StoryboardConstants.initialMapViewWidth,
+                                                      StoryboardConstants.initialMapViewHeight)
+            
+            mapView.setRegion(MKCoordinateRegionMake(initialMapCenter, initialMapSpan), animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

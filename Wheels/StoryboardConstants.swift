@@ -32,4 +32,10 @@ class StoryboardConstants {
         df.dateFormat = "h:mm a' on 'EEEE, MM/dd/yy"
         return df
     }()
+    
+    /* Map Coordinates */
+    static let sterlingMemorialLibraryLatitude = 41.310842
+    static let sterlingMemorialLibraryLongitude = -72.929603
+    static let initialMapViewWidth = 0.014
+    static let initialMapViewHeight = 0.010
 }
