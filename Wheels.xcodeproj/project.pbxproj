@@ -25,6 +25,7 @@
 		207AD2D21DCA533900EF6465 /* EditScheduledRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */; };
 		207AD2D51DCA55D800EF6465 /* EditScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */; };
 		208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */; };
+		209320FC1DD3873B009C1FFA /* OnDemandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209320FB1DD3873B009C1FFA /* OnDemandViewController.swift */; };
 		20A763941DC69777000A776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763931DC69777000A776E /* AppDelegate.swift */; };
 		20A763991DC69777000A776E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A763971DC69777000A776E /* Main.storyboard */; };
 		20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */; };
@@ -32,7 +33,6 @@
 		20A763A11DC69777000A776E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A7639F1DC69777000A776E /* LaunchScreen.storyboard */; };
 		20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763A81DC6C917000A776E /* LoginViewController.swift */; };
 		20A763B21DC6DFDB000A776E /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B11DC6DFDB000A776E /* QueueViewController.swift */; };
-		20A763B41DC6DFF0000A776E /* OnDemandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */; };
 		20A763B61DC6E015000A776E /* PlanAheadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B51DC6E015000A776E /* PlanAheadViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,7 @@
 		207AD2D11DCA533900EF6465 /* EditScheduledRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditScheduledRideViewController.swift; path = Wheels/EditScheduledRideViewController.swift; sourceTree = "<group>"; };
 		207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditScheduledRideTableViewController.swift; path = Wheels/EditScheduledRideTableViewController.swift; sourceTree = "<group>"; };
 		208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduledRideTableViewCell.swift; path = Wheels/ScheduledRideTableViewCell.swift; sourceTree = "<group>"; };
+		209320FB1DD3873B009C1FFA /* OnDemandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnDemandViewController.swift; path = Wheels/OnDemandViewController.swift; sourceTree = "<group>"; };
 		20A763901DC69777000A776E /* Wheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A763931DC69777000A776E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20A763981DC69777000A776E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		20A763A21DC69777000A776E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20A763A81DC6C917000A776E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
 		20A763B11DC6DFDB000A776E /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueueViewController.swift; path = Wheels/QueueViewController.swift; sourceTree = "<group>"; };
-		20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnDemandViewController.swift; path = Wheels/OnDemandViewController.swift; sourceTree = "<group>"; };
 		20A763B51DC6E015000A776E /* PlanAheadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanAheadViewController.swift; path = Wheels/PlanAheadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,7 @@
 		2006FF8E1DC8D2470094C668 /* On Demand */ = {
 			isa = PBXGroup;
 			children = (
-				20A763B31DC6DFF0000A776E /* OnDemandViewController.swift */,
+				209320FB1DD3873B009C1FFA /* OnDemandViewController.swift */,
 			);
 			name = "On Demand";
 			sourceTree = "<group>";
@@ -308,7 +308,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20A763B41DC6DFF0000A776E /* OnDemandViewController.swift in Sources */,
 				20A763B21DC6DFDB000A776E /* QueueViewController.swift in Sources */,
 				2049AADF1DC79C4B00B2713A /* Debug.swift in Sources */,
 				2006FF9B1DC922040094C668 /* NewScheduledRideRootViewController.swift in Sources */,
@@ -321,6 +320,7 @@
 				20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */,
 				2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */,
 				2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */,
+				209320FC1DD3873B009C1FFA /* OnDemandViewController.swift in Sources */,
 				2006FF8C1DC8CEEB0094C668 /* UIViewControllerWithRider.swift in Sources */,
 				207AD2D51DCA55D800EF6465 /* EditScheduledRideTableViewController.swift in Sources */,
 				2006FF991DC916BD0094C668 /* NewScheduledRideReceiving.swift in Sources */,

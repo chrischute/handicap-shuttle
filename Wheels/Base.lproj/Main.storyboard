@@ -131,21 +131,80 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4G2-ap-1Jg">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chn-Wg-2D1">
+                                <rect key="frame" x="16" y="76" width="343" height="47"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pickup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vZt-Jb-R9x">
+                                        <rect key="frame" x="12" y="8" width="319" height="31"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                        <connections>
+                                            <action selector="editAddressDidBegin:" destination="Rex-1W-pcY" eventType="editingDidBegin" id="EWm-sc-7bU"/>
+                                            <action selector="editAddressDidChange:" destination="Rex-1W-pcY" eventType="editingChanged" id="atz-g5-UL6"/>
+                                            <action selector="editAddressDidEnd:" destination="Rex-1W-pcY" eventType="editingDidEnd" id="1tI-yS-Rpv"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="vZt-Jb-R9x" secondAttribute="trailing" constant="12" id="7TF-cK-5dt"/>
+                                    <constraint firstAttribute="bottom" secondItem="vZt-Jb-R9x" secondAttribute="bottom" constant="8" id="GtB-j7-fDx"/>
+                                    <constraint firstAttribute="height" constant="47" id="K5w-B3-PXG"/>
+                                    <constraint firstItem="vZt-Jb-R9x" firstAttribute="leading" secondItem="chn-Wg-2D1" secondAttribute="leading" constant="12" id="bKz-sK-3TK"/>
+                                    <constraint firstItem="vZt-Jb-R9x" firstAttribute="top" secondItem="chn-Wg-2D1" secondAttribute="top" constant="8" id="u0X-1y-RxZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDV-Zg-TYG">
+                                <rect key="frame" x="16" y="131" width="343" height="47"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Dropoff Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ar-Jx-20F">
+                                        <rect key="frame" x="12" y="8" width="319" height="31"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="editAddressDidBegin:" destination="Rex-1W-pcY" eventType="editingDidBegin" id="cLe-Gh-kPk"/>
+                                            <action selector="editAddressDidChange:" destination="Rex-1W-pcY" eventType="editingChanged" id="nu3-1C-khC"/>
+                                            <action selector="editAddressDidEnd:" destination="Rex-1W-pcY" eventType="editingDidEnd" id="Gxu-RK-7oP"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4ar-Jx-20F" secondAttribute="bottom" constant="8" id="2YR-0o-orA"/>
+                                    <constraint firstItem="4ar-Jx-20F" firstAttribute="leading" secondItem="zDV-Zg-TYG" secondAttribute="leading" constant="12" id="6Dq-rh-5uP"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ar-Jx-20F" secondAttribute="trailing" constant="12" id="HY8-Fx-H12"/>
+                                    <constraint firstItem="4ar-Jx-20F" firstAttribute="top" secondItem="zDV-Zg-TYG" secondAttribute="top" constant="8" id="Kp3-Dd-SpP"/>
+                                    <constraint firstAttribute="height" constant="47" id="yXY-qy-ff9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="chn-Wg-2D1" firstAttribute="trailing" secondItem="hbh-Uv-D0o" secondAttribute="trailingMargin" id="8j8-eU-d3n"/>
+                            <constraint firstItem="zDV-Zg-TYG" firstAttribute="trailing" secondItem="hbh-Uv-D0o" secondAttribute="trailingMargin" id="BCj-W9-6F7"/>
+                            <constraint firstItem="zDV-Zg-TYG" firstAttribute="leading" secondItem="hbh-Uv-D0o" secondAttribute="leadingMargin" id="CYO-XR-5ZJ"/>
                             <constraint firstItem="4G2-ap-1Jg" firstAttribute="top" secondItem="HsE-C9-CdV" secondAttribute="bottom" id="Mf4-jJ-mx2"/>
+                            <constraint firstItem="zDV-Zg-TYG" firstAttribute="top" secondItem="chn-Wg-2D1" secondAttribute="bottom" constant="8" id="Snp-aN-RbW"/>
+                            <constraint firstItem="zDV-Zg-TYG" firstAttribute="top" secondItem="chn-Wg-2D1" secondAttribute="bottom" constant="8" id="UoO-Kx-RZ2"/>
+                            <constraint firstItem="AU3-wd-BYJ" firstAttribute="top" secondItem="4G2-ap-1Jg" secondAttribute="bottom" id="V7b-Yp-BuT"/>
                             <constraint firstAttribute="trailing" secondItem="HsE-C9-CdV" secondAttribute="trailing" id="X7s-jP-nIx"/>
                             <constraint firstItem="HsE-C9-CdV" firstAttribute="top" secondItem="pvz-3h-B6K" secondAttribute="bottom" id="bLF-kc-P8o"/>
-                            <constraint firstItem="4G2-ap-1Jg" firstAttribute="top" secondItem="HsE-C9-CdV" secondAttribute="bottom" id="d4v-9u-I58"/>
-                            <constraint firstItem="AU3-wd-BYJ" firstAttribute="top" secondItem="4G2-ap-1Jg" secondAttribute="bottom" id="gV1-sM-Z6Z"/>
+                            <constraint firstItem="chn-Wg-2D1" firstAttribute="trailing" secondItem="hbh-Uv-D0o" secondAttribute="trailingMargin" id="g8X-dh-3XI"/>
                             <constraint firstItem="HsE-C9-CdV" firstAttribute="leading" secondItem="hbh-Uv-D0o" secondAttribute="leading" id="h39-ts-NIh"/>
+                            <constraint firstItem="chn-Wg-2D1" firstAttribute="leading" secondItem="hbh-Uv-D0o" secondAttribute="leadingMargin" id="lju-MZ-MxJ"/>
                             <constraint firstItem="4G2-ap-1Jg" firstAttribute="leading" secondItem="hbh-Uv-D0o" secondAttribute="leading" id="oV5-hM-pKk"/>
+                            <constraint firstItem="chn-Wg-2D1" firstAttribute="top" secondItem="HsE-C9-CdV" secondAttribute="bottom" constant="12" id="t7j-vQ-2xQ"/>
                             <constraint firstAttribute="trailing" secondItem="4G2-ap-1Jg" secondAttribute="trailing" id="tPe-gE-eLo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fromAddressTextField" destination="vZt-Jb-R9x" id="8hG-lq-1BP"/>
+                        <outlet property="fromAddressView" destination="chn-Wg-2D1" id="sJS-g1-H5S"/>
                         <outlet property="mapView" destination="4G2-ap-1Jg" id="246-wB-kF2"/>
+                        <outlet property="toAddressTextField" destination="4ar-Jx-20F" id="MkX-ST-oMc"/>
+                        <outlet property="toAddressView" destination="zDV-Zg-TYG" id="Fue-ep-1yH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0G-1P-dAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

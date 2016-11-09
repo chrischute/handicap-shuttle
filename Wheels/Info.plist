@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Allow Wheels to use your location in the background. </string>
+	<string>Allows this app to schedule rides based on your GPS location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow Wheels to use your location to request rides.</string>
+	<string>Allows this app to schedule rides based on your GPS location.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
