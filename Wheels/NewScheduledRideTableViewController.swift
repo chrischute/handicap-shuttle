@@ -32,6 +32,7 @@ class NewScheduledRideTableViewController: UITableViewController, UITextFieldDel
         
         // Dismiss the keyboard when tapping outside its bounds.
         setKeyboardAutoHiding(true)
+        pickupLocationTextField.becomeFirstResponder()
     }
 
     private func notifyParentViewController() {

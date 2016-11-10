@@ -17,6 +17,7 @@ class StoryboardConstants {
     static let editScheduledRideSegueId = "editScheduledRideSegue"
     static let unwindDoneNewScheduledRideSegueId = "unwindDoneNewScheduledRideSegue"
     static let unwindEditScheduledRideSegueId = "unwindEditScheduledRideSegue"
+    static let waitForRideSegueId = "waitForRideSegue"
 
     /* View Controllers */
     static let onDemandViewControllerId = "onDemandViewController"
@@ -38,4 +39,9 @@ class StoryboardConstants {
     static let sterlingMemorialLibraryLongitude = -72.929603
     static let initialMapViewWidth = 0.014
     static let initialMapViewHeight = 0.010
+    
+    /* Special Services Van Constants */
+    static let dispatchPhoneNumber = "2034322788"
+    static let studentRequestFormURL = "http://your.yale.edu/sites/default/files/files/StudentRequestformforSpecialServicesVanTransportation.pdf"
+    static let employeeRequestFormURL = "http://your.yale.edu/sites/default/files/files/Special%20Service%20Van%20Form%20updated%2003_27_12.pdf"
 }
