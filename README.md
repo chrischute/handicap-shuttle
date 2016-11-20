@@ -3,9 +3,11 @@
     - Larger text fields.
     - Don't obscure text fields with keyboard.
   2. Get user's current location for on-demand ride requests.
-  3. Map of buildings to street side coordinates.
+    - *Optional*: Use Google Maps API.
+  3. Create app icon.
+  4. Map of buildings to street side coordinates.
     - *Optional*: Table view that slides up with address suggestions.
-  4. Dispatcher approval of rides.
+  5. Dispatcher approval of rides.
     - *Prototype 1*: Generate email with ride info. Send back email with addresses filled in.
     - *Prototype 2*: Central database with all rides.
       - Sends push notification to rider when ride gets approved.
