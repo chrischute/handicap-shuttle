@@ -13,6 +13,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var netIdTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var netIdView: UIView!
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var loginView: UIView!
     /**
      * (1) Overridden UIViewController functions.
      */
@@ -21,6 +24,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Dismiss the keyboard by tapping outside its bounds.
         setKeyboardAutoHiding(true)
+        
+        // Round the corners of login text fields and button.
+        netIdView.layer.cornerRadius = 5
+        netIdView.layer.masksToBounds = true
+        passwordView.layer.cornerRadius = 5
+        passwordView.layer.masksToBounds = true
+        loginView.layer.cornerRadius = 5
+        loginView.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
