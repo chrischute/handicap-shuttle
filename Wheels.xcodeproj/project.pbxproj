@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1507CDDA1BB366075B611E91 /* Pods_Wheels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E74026099BEDDD6A26C023B /* Pods_Wheels.framework */; };
 		2006FF8C1DC8CEEB0094C668 /* UIViewControllerWithRider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF8B1DC8CEEB0094C668 /* UIViewControllerWithRider.swift */; };
 		2006FF911DC8D3640094C668 /* Ride+rideInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF901DC8D3640094C668 /* Ride+rideInDatabase.swift */; };
 		2006FF951DC8D90C0094C668 /* Ride+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF941DC8D90C0094C668 /* Ride+CoreDataProperties.swift */; };
@@ -68,6 +69,9 @@
 		20A763A81DC6C917000A776E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
 		20A763B11DC6DFDB000A776E /* ShuttleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShuttleInfoViewController.swift; path = Wheels/ShuttleInfoViewController.swift; sourceTree = "<group>"; };
 		20A763B51DC6E015000A776E /* PlanAheadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanAheadViewController.swift; path = Wheels/PlanAheadViewController.swift; sourceTree = "<group>"; };
+		6FA35FDFCD6D424371A2679E /* Pods-Wheels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wheels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wheels/Pods-Wheels.release.xcconfig"; sourceTree = "<group>"; };
+		7E74026099BEDDD6A26C023B /* Pods_Wheels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wheels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA086633F0CA4926A6F5CB03 /* Pods-Wheels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wheels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wheels/Pods-Wheels.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1507CDDA1BB366075B611E91 /* Pods_Wheels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +186,8 @@
 			children = (
 				20A763921DC69777000A776E /* Wheels */,
 				20A763911DC69777000A776E /* Products */,
+				737A4FE257F8CCD31C5701A4 /* Pods */,
+				3ADBDA1C6937140278BB1E63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +245,23 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		3ADBDA1C6937140278BB1E63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E74026099BEDDD6A26C023B /* Pods_Wheels.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		737A4FE257F8CCD31C5701A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA086633F0CA4926A6F5CB03 /* Pods-Wheels.debug.xcconfig */,
+				6FA35FDFCD6D424371A2679E /* Pods-Wheels.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,9 +269,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20A763A51DC69777000A776E /* Build configuration list for PBXNativeTarget "Wheels" */;
 			buildPhases = (
+				F9F939FA8BE555BC5BC08F3E /* [CP] Check Pods Manifest.lock */,
 				20A7638C1DC69777000A776E /* Sources */,
 				20A7638D1DC69777000A776E /* Frameworks */,
 				20A7638E1DC69777000A776E /* Resources */,
+				3A10786F46BCB1B098C9564B /* [CP] Embed Pods Frameworks */,
+				B50F7EFACD827AB3E615D65D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -305,6 +332,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A10786F46BCB1B098C9564B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wheels/Pods-Wheels-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B50F7EFACD827AB3E615D65D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wheels/Pods-Wheels-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9F939FA8BE555BC5BC08F3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		20A7638C1DC69777000A776E /* Sources */ = {
@@ -454,6 +529,7 @@
 		};
 		20A763A61DC69777000A776E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA086633F0CA4926A6F5CB03 /* Pods-Wheels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LFVYJRDCNE;
@@ -468,6 +544,7 @@
 		};
 		20A763A71DC69777000A776E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FA35FDFCD6D424371A2679E /* Pods-Wheels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LFVYJRDCNE;
