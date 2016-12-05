@@ -4,6 +4,9 @@
 build/
 DerivedData/
 
+## CocoaPods Dependency Manager
+Pods/
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
