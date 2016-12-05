@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AWSDynamoDB
 
 class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIBarPositioningDelegate, NewScheduledRideReceiving, RideCancellationReceiving {
     var fetchedResultsController: NSFetchedResultsController<Ride>!
@@ -20,8 +21,29 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
             for: UIControlState.normal)
         
         initializeFetchedResultsController()
+        setupTable()
         
         super.viewDidLoad()
+    }
+    
+    // MARK: Synchronize with AWS DynamoDB.
+    private func setupTable() {
+        //See if the test table exists.
+        DynamoDBManager.describeTable()?.continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask!) -> AnyObject! in
+            // Display an alert if cannot connect to DynamoDB table.
+            if let error = task.error {
+                Debug.log("AWS Error: \(error.localizedDescription)")
+                
+                let alertController = UIAlertController(title: "Cannot Connect to Database", message: "The central server cannot be reached.", preferredStyle: UIAlertControllerStyle.alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                // TODO: Scan the DynamoDB table for rides. Insert into the local table.
+                Debug.log("AWS: Successfully found dynamo table.")
+            }
+            return nil
+        })
     }
     
     // MARK: NSFetchedResultsController for managing rides on Core Data.
@@ -55,6 +77,11 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
                 try moc.save()
             } catch let error {
                 Debug.log("Error inserting new ride: \(error)")
+            }
+            
+            // Send the ride to AWS Dynamo table.
+            if let dynamoRide = DynamoDBTableRow.fromRideInfo(ride) {
+                dynamoInsertRow(dynamoRide)
             }
         }
     }
@@ -168,6 +195,30 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
                 }
             }
         }
+    }
+    
+    // MARK: Dynamo Insert a New Ride
+    private func dynamoInsertRow(_ row: DynamoDBTableRow) {
+        let objectMapper = AWSDynamoDBObjectMapper.default()
+        
+        objectMapper.save(row).continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask<AnyObject>!) -> AnyObject! in
+            if let error = task.error {
+                // Failed to insert row into Dynamo table. Display error.
+                Debug.log("AWS Error: \(error.localizedDescription)")
+                let alert = UIAlertController(title: "Cannot Insert Ride", message: "Cannot reach central server to insert ride.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                // Successfully inserted row into Dynamo table.
+                // TODO: Stopped here. Successfully adding entries. Now need to query for previous entries. Sync table.
+                let alert = UIAlertController(title: "Succeeded", message: "Successfully inserted the data into the table.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+            return nil
+        })
     }
 
     // Unwind to the PlanAheadViewController after pressing 'done'.
