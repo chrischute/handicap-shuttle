@@ -9,12 +9,13 @@
 import UIKit
 import CoreData
 import MapKit
+import AWSCore
+import AWSCognito
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -22,6 +23,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+        
+        // Set up Amazon Cognito for US East and the "Wheels iOS App Users" identity pool.
+        // TODO: Is this best place to set up Cognito?
+        let cognitoCredentialsProvider = AWSCognitoCredentialsProvider(regionType: .usEast1, identityPoolId: "us-east-1:fdc2fa28-9f2a-4f56-8061-3c72fe3e0f93")
+        let cognitoConfiguration = AWSServiceConfiguration(region: .usEast1, credentialsProvider: cognitoCredentialsProvider)
+        AWSServiceManager.default().defaultServiceConfiguration = cognitoConfiguration
+        
+        cognitoCredentialsProvider.getIdentityId().continue({ (task: AWSTask!) -> AnyObject! in
+            if let error = task.error {
+                print("AWSTask Error: " + error.localizedDescription)
+                
+            } else {
+                // the task result will contain the identity id
+                let cognitoId = task.result
+                print("Got cognito ID = \(cognitoId)")
+            }
+            return nil
+        })
         
         return true
     }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1507CDDA1BB366075B611E91 /* Pods_Wheels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E74026099BEDDD6A26C023B /* Pods_Wheels.framework */; };
+		20062C171DF4F05300C6B9B8 /* DynamoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20062C161DF4F05300C6B9B8 /* DynamoDBManager.swift */; };
+		20062C1A1DF4F88700C6B9B8 /* DynamoDBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20062C191DF4F88700C6B9B8 /* DynamoDBConstants.swift */; };
 		2006FF8C1DC8CEEB0094C668 /* UIViewControllerWithRider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF8B1DC8CEEB0094C668 /* UIViewControllerWithRider.swift */; };
 		2006FF911DC8D3640094C668 /* Ride+rideInDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF901DC8D3640094C668 /* Ride+rideInDatabase.swift */; };
 		2006FF951DC8D90C0094C668 /* Ride+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF941DC8D90C0094C668 /* Ride+CoreDataProperties.swift */; };
@@ -28,6 +30,7 @@
 		207AD2D51DCA55D800EF6465 /* EditScheduledRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */; };
 		208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */; };
 		209320FC1DD3873B009C1FFA /* OnDemandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209320FB1DD3873B009C1FFA /* OnDemandViewController.swift */; };
+		209A98021DF5C8F900720E5F /* DynamoDBTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209A98011DF5C8F900720E5F /* DynamoDBTableRow.swift */; };
 		20A763941DC69777000A776E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763931DC69777000A776E /* AppDelegate.swift */; };
 		20A763991DC69777000A776E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A763971DC69777000A776E /* Main.storyboard */; };
 		20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A7639A1DC69777000A776E /* Wheels.xcdatamodeld */; };
@@ -39,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20062C161DF4F05300C6B9B8 /* DynamoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoDBManager.swift; sourceTree = "<group>"; };
+		20062C191DF4F88700C6B9B8 /* DynamoDBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoDBConstants.swift; sourceTree = "<group>"; };
 		2006FF8B1DC8CEEB0094C668 /* UIViewControllerWithRider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerWithRider.swift; path = Wheels/UIViewControllerWithRider.swift; sourceTree = "<group>"; };
 		2006FF901DC8D3640094C668 /* Ride+rideInDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ride+rideInDatabase.swift"; sourceTree = "<group>"; };
 		2006FF941DC8D90C0094C668 /* Ride+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ride+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -59,6 +64,7 @@
 		207AD2D41DCA55D800EF6465 /* EditScheduledRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditScheduledRideTableViewController.swift; path = Wheels/EditScheduledRideTableViewController.swift; sourceTree = "<group>"; };
 		208F1A4C1DC95BD400D7795B /* ScheduledRideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduledRideTableViewCell.swift; path = Wheels/ScheduledRideTableViewCell.swift; sourceTree = "<group>"; };
 		209320FB1DD3873B009C1FFA /* OnDemandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnDemandViewController.swift; path = Wheels/OnDemandViewController.swift; sourceTree = "<group>"; };
+		209A98011DF5C8F900720E5F /* DynamoDBTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoDBTableRow.swift; sourceTree = "<group>"; };
 		20A763901DC69777000A776E /* Wheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A763931DC69777000A776E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20A763981DC69777000A776E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +92,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20062C181DF4F05800C6B9B8 /* DynamoDB */ = {
+			isa = PBXGroup;
+			children = (
+				20062C161DF4F05300C6B9B8 /* DynamoDBManager.swift */,
+				20062C191DF4F88700C6B9B8 /* DynamoDBConstants.swift */,
+				209A98011DF5C8F900720E5F /* DynamoDBTableRow.swift */,
+			);
+			name = DynamoDB;
+			sourceTree = "<group>";
+		};
 		2006FF8D1DC8D23C0094C668 /* Plan Ahead */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				2049AACF1DC78CD700B2713A /* Core Data */,
+				20062C181DF4F05800C6B9B8 /* DynamoDB */,
 				20A763AA1DC6C924000A776E /* Login */,
 				20A763AE1DC6CE50000A776E /* Main Page */,
 				2049AAEB1DC7B80000B2713A /* Storyboard */,
@@ -391,11 +408,13 @@
 				2006FF9B1DC922040094C668 /* NewScheduledRideRootViewController.swift in Sources */,
 				207AD2D21DCA533900EF6465 /* EditScheduledRideViewController.swift in Sources */,
 				2049AAE61DC7B69300B2713A /* Ride+CoreDataClass.swift in Sources */,
+				20062C171DF4F05300C6B9B8 /* DynamoDBManager.swift in Sources */,
 				2049AAF11DC7CF3B00B2713A /* NewScheduledRideTableViewController.swift in Sources */,
 				2006FF951DC8D90C0094C668 /* Ride+CoreDataProperties.swift in Sources */,
 				2049AAD11DC7902E00B2713A /* StoryboardConstants.swift in Sources */,
 				2006FF911DC8D3640094C668 /* Ride+rideInDatabase.swift in Sources */,
 				20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */,
+				209A98021DF5C8F900720E5F /* DynamoDBTableRow.swift in Sources */,
 				2073172B1DC7E073000BA8E0 /* MainPageViewController.swift in Sources */,
 				2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */,
 				209320FC1DD3873B009C1FFA /* OnDemandViewController.swift in Sources */,
@@ -405,6 +424,7 @@
 				2006FF991DC916BD0094C668 /* NewScheduledRideReceiving.swift in Sources */,
 				2049AAEA1DC7B76500B2713A /* Rider+riderInDatabase.swift in Sources */,
 				20A763941DC69777000A776E /* AppDelegate.swift in Sources */,
+				20062C1A1DF4F88700C6B9B8 /* DynamoDBConstants.swift in Sources */,
 				20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */,
 				2049AADD1DC79A8300B2713A /* Rider+CoreDataProperties.swift in Sources */,
 				208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */,
@@ -454,6 +474,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -503,6 +524,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -533,8 +555,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LFVYJRDCNE;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Wheels/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chrischute.wheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -548,8 +573,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LFVYJRDCNE;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Wheels/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chrischute.wheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
