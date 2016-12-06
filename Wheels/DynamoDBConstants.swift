@@ -11,6 +11,7 @@ import Foundation
 class DynamoDBConstants {
     static let ridesTableName = "WheelsRides"
     static let netIdKeyName = "netId"
+    static let netIdIndexName = "netId-index"
     static let pickupTimeKeyName = "pickupTime"
     static let fromAddressAttributeName = "fromAddress"
     static let toAddressAttributeName = "toAddress"

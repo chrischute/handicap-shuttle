@@ -21,8 +21,11 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
             for: UIControlState.normal)
         
         initializeFetchedResultsController()
+        // Make sure we connect to Dynamo.
         setupTable()
-        
+        // Get all the rides for the current rider's netID.
+        dynamoSearch(for: self.rider)
+
         super.viewDidLoad()
     }
     
@@ -211,12 +214,55 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
                 self.present(alert, animated: true, completion: nil)
             } else {
                 // Successfully inserted row into Dynamo table.
-                // TODO: Stopped here. Successfully adding entries. Now need to query for previous entries. Sync table.
                 let alert = UIAlertController(title: "Succeeded", message: "Successfully inserted the data into the table.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
             }
+            return nil
+        })
+    }
+    
+    // MARK: Dynamo - Search for Rides under this netId.
+    private func dynamoSearch(for rider: Rider) {
+        let objectMapper = AWSDynamoDBObjectMapper.default()
+        
+        // Set up the query for all rides with the current user's netID.
+        let queryForNetId = AWSDynamoDBQueryExpression()
+        queryForNetId.scanIndexForward = true
+        queryForNetId.indexName = DynamoDBConstants.netIdIndexName
+        queryForNetId.keyConditionExpression = "\(DynamoDBConstants.netIdKeyName) = :riderNetId" // TODO: AND ride didn't already happen?
+        queryForNetId.expressionAttributeValues = [
+            ":riderNetId" : rider.netId!
+        ]
+        
+        // Execute the query for all rides with the current user's netID.
+        objectMapper.query(DynamoDBTableRow.self, expression: queryForNetId).continue({ (task: AWSTask<AWSDynamoDBPaginatedOutput>!) -> AnyObject! in
+            if let error = task.error {
+                Debug.log("Query Error: \(error.localizedDescription)")
+                let alert = UIAlertController(title: "Cannot Connect to Server", message: "Cannot connect to central server.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                if let result = task.result {
+                    // Insert all fetched rows into our table.
+                    for fetchedRow in result.items {
+                        if let row = fetchedRow as? DynamoDBTableRow {
+                            if let fromAddress = row.fromAddress,
+                                let toAddress = row.toAddress,
+                                let pickupTime = row.pickupTime,
+                                let needsWheelchairNSNumber = row.needsWheelchair {
+                                if let epoch = Double(pickupTime) {
+                                    let dateAndTime = NSDate(timeIntervalSince1970: TimeInterval(epoch))
+                                    _ = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: dateAndTime, withWheelchair: Bool(needsWheelchairNSNumber), in: self.moc)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // We don't use the return value from this task.
             return nil
         })
     }
