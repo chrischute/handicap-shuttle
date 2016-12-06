@@ -214,7 +214,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
                 self.present(alert, animated: true, completion: nil)
             } else {
                 // Successfully inserted row into Dynamo table.
-                let alert = UIAlertController(title: "Succeeded", message: "Successfully inserted the data into the table.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Success", message: "Your ride request has been submitted.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)

@@ -18,16 +18,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var loginView: UIView!
     @IBAction func editingDidChange(_ sender: UITextField) {
-        // Enable ride request button if there's text in both address fields,
+        // Enable the login button if there's text in both the netId and password fields,
         // otherwise disable it. Fade in the effect of enabling or disabling.
-        // Aqua color has (R = 0, G = 128, B = 255).
         if let netIdChars = netIdTextField.text?.characters,
             let passwordChars = passwordTextField.text?.characters {
             if netIdChars.count > 0 && passwordChars.count > 0 {
                 if !loginButton.isEnabled {
                     loginButton.isEnabled = true
                     loginButton.setTitleColor(UIColor.darkGray, for: .normal)
-                    UIView.animate(withDuration: 0.3,
+                    UIView.animate(withDuration: 0.15,
                                    delay: 0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
                                    animations: { self.loginView.backgroundColor = UIColor.yellow },
@@ -37,7 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if loginButton.isEnabled {
                     loginButton.isEnabled = false
                     loginButton.setTitleColor(UIColor.white, for: .normal)
-                    UIView.animate(withDuration: 0.3,
+                    UIView.animate(withDuration: 0.15,
                                    delay: 0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
                                    animations: { self.loginView.backgroundColor = UIColor.lightGray },
@@ -67,7 +66,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardConstants.loginSegueId {
             let dest = segue.destination as! MainPageViewController

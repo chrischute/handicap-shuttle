@@ -6,6 +6,7 @@
 //  Copyright © 2016 Christopher Chute. All rights reserved.
 //
 
+import AWSDynamoDB
 import UIKit
 import MapKit
 
@@ -41,14 +42,14 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         let needsWheelchair = true
         
         if let fromAddress = fromAddressTextField.text, let toAddress = toAddressTextField.text {
-            // Insert ride in database.
-            _ = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: NSDate.init(timeIntervalSinceNow: 0), withWheelchair: needsWheelchair, in: self.moc)
-            // TODO: Send ride to dispatcher.
-            
-            // Display an alert notifying that ride will be picked up.
-            let requestRideAlert = UIAlertController(title: "Request Pending", message: "Your request is being reviewed.", preferredStyle: .alert)
-            requestRideAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(requestRideAlert, animated: true, completion: nil)
+            // Insert ride in database, pickup time initializes to 5 min from now.
+            if let onDemandRide = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: NSDate.init(timeIntervalSinceNow: 300.0), withWheelchair: needsWheelchair, in: self.moc) {
+                // Ride created locally, now send it to the DynamoDB table.
+                if let onDemandRideRow = DynamoDBTableRow.fromRideInfo(onDemandRide) {
+                    dynamoInsertRow(onDemandRideRow)
+                }
+                
+            }
         }
     }
     @IBAction func editAddressDidChange(_ sender: UITextField) {
@@ -57,7 +58,7 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         } else if sender == toAddressTextField {
             Debug.log("To address: \(toAddressTextField.text!)")
         }
-        
+
         // Enable ride request button if there's text in both address fields,
         // otherwise disable it. Fade in the effect of enabling or disabling.
         // Aqua color has (R = 0, G = 128, B = 255).
@@ -153,5 +154,28 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         }
         
         return true
+    }
+    
+    // MARK: Dynamo Insert a New Ride
+    private func dynamoInsertRow(_ row: DynamoDBTableRow) {
+        let objectMapper = AWSDynamoDBObjectMapper.default()
+        
+        objectMapper.save(row).continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask<AnyObject>!) -> AnyObject! in
+            if let error = task.error {
+                // Failed to insert row into Dynamo table. Display error.
+                Debug.log("AWS Error: \(error.localizedDescription)")
+                let alert = UIAlertController(title: "Cannot Insert Ride", message: "Cannot reach central server to insert ride.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                // Successfully inserted row into Dynamo table.
+                let alert = UIAlertController(title: "Success", message: "Your ride request has been submitted.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+            return nil
+        })
     }
 }
