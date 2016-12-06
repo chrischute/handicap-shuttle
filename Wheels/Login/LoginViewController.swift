@@ -12,10 +12,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var netIdTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var netIdView: UIView!
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var loginView: UIView!
+    @IBAction func editingDidChange(_ sender: UITextField) {
+        // Enable ride request button if there's text in both address fields,
+        // otherwise disable it. Fade in the effect of enabling or disabling.
+        // Aqua color has (R = 0, G = 128, B = 255).
+        if let netIdChars = netIdTextField.text?.characters,
+            let passwordChars = passwordTextField.text?.characters {
+            if netIdChars.count > 0 && passwordChars.count > 0 {
+                if !loginButton.isEnabled {
+                    loginButton.isEnabled = true
+                    loginButton.setTitleColor(UIColor.darkGray, for: .normal)
+                    UIView.animate(withDuration: 0.3,
+                                   delay: 0,
+                                   options: UIViewAnimationOptions.allowUserInteraction,
+                                   animations: { self.loginView.backgroundColor = UIColor.yellow },
+                                   completion: nil)
+                }
+            } else {
+                if loginButton.isEnabled {
+                    loginButton.isEnabled = false
+                    loginButton.setTitleColor(UIColor.white, for: .normal)
+                    UIView.animate(withDuration: 0.3,
+                                   delay: 0,
+                                   options: UIViewAnimationOptions.allowUserInteraction,
+                                   animations: { self.loginView.backgroundColor = UIColor.lightGray },
+                                   completion: nil)
+                }
+            }
+        }
+    }
     /**
      * (1) Overridden UIViewController functions.
      */

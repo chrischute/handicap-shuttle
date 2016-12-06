@@ -33,21 +33,22 @@
                                 <rect key="frame" x="16" y="203" width="343" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NetID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WSh-hb-hkS">
-                                        <rect key="frame" x="8" y="8" width="327" height="34"/>
+                                        <rect key="frame" x="10" y="8" width="323" height="34"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
+                                            <action selector="editingDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="AAt-i5-WXa"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="PT6-Xy-74h"/>
                                         </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="WSh-hb-hkS" firstAttribute="leading" secondItem="ZbM-3q-1uV" secondAttribute="leadingMargin" id="DTd-oX-lef"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="WSh-hb-hkS" secondAttribute="bottom" id="SPs-eA-FeQ"/>
-                                    <constraint firstItem="WSh-hb-hkS" firstAttribute="trailing" secondItem="ZbM-3q-1uV" secondAttribute="trailingMargin" id="TCU-mH-DiW"/>
-                                    <constraint firstItem="WSh-hb-hkS" firstAttribute="top" secondItem="ZbM-3q-1uV" secondAttribute="topMargin" id="mXM-5E-W1a"/>
+                                    <constraint firstAttribute="bottom" secondItem="WSh-hb-hkS" secondAttribute="bottom" constant="8" id="1uL-i9-8wO"/>
+                                    <constraint firstAttribute="trailing" secondItem="WSh-hb-hkS" secondAttribute="trailing" constant="10" id="V4D-so-QUB"/>
+                                    <constraint firstItem="WSh-hb-hkS" firstAttribute="top" secondItem="ZbM-3q-1uV" secondAttribute="top" constant="8" id="Wvr-Qt-bSB"/>
+                                    <constraint firstItem="WSh-hb-hkS" firstAttribute="leading" secondItem="ZbM-3q-1uV" secondAttribute="leading" constant="10" id="rys-d5-igo"/>
                                     <constraint firstAttribute="height" constant="50" id="wfJ-3q-GyM"/>
                                 </constraints>
                             </view>
@@ -55,44 +56,48 @@
                                 <rect key="frame" x="16" y="261" width="343" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NPC-wO-Ica">
-                                        <rect key="frame" x="8" y="8" width="327" height="34"/>
+                                        <rect key="frame" x="10" y="8" width="323" height="34"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                         <connections>
+                                            <action selector="editingDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="Q7m-XK-qN5"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="kf2-v0-iDp"/>
                                         </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NPC-wO-Ica" secondAttribute="bottom" constant="8" id="Iy4-8B-T0l"/>
+                                    <constraint firstItem="NPC-wO-Ica" firstAttribute="leading" secondItem="Sys-Yl-lHh" secondAttribute="leading" constant="10" id="LMM-bO-o3s"/>
                                     <constraint firstAttribute="height" constant="50" id="MvJ-NT-XQf"/>
-                                    <constraint firstItem="NPC-wO-Ica" firstAttribute="leading" secondItem="Sys-Yl-lHh" secondAttribute="leadingMargin" id="Vtc-rb-WYK"/>
-                                    <constraint firstItem="NPC-wO-Ica" firstAttribute="top" secondItem="Sys-Yl-lHh" secondAttribute="topMargin" id="b0r-3y-631"/>
+                                    <constraint firstItem="NPC-wO-Ica" firstAttribute="top" secondItem="Sys-Yl-lHh" secondAttribute="top" constant="8" id="baL-5j-xSQ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="dYj-4s-WC5"/>
-                                    <constraint firstItem="NPC-wO-Ica" firstAttribute="trailing" secondItem="Sys-Yl-lHh" secondAttribute="trailingMargin" id="dge-Mx-wWs"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="NPC-wO-Ica" secondAttribute="bottom" id="l57-CS-YF9"/>
+                                    <constraint firstAttribute="trailing" secondItem="NPC-wO-Ica" secondAttribute="trailing" constant="10" id="oLO-sc-4yY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0V-of-SmQ">
                                 <rect key="frame" x="16" y="319" width="343" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dL-fu-uej">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dL-fu-uej">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                         <state key="normal" title="Login">
-                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="48r-HM-wcd" kind="show" identifier="loginSegue" id="eo8-Y3-VtX"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="7t1-cG-hPi"/>
+                                    <constraint firstAttribute="bottom" secondItem="4dL-fu-uej" secondAttribute="bottom" id="T0b-DV-2y8"/>
+                                    <constraint firstItem="4dL-fu-uej" firstAttribute="top" secondItem="L0V-of-SmQ" secondAttribute="top" id="Z3L-du-pt9"/>
                                     <constraint firstAttribute="height" constant="50" id="eoZ-RP-61w"/>
+                                    <constraint firstItem="4dL-fu-uej" firstAttribute="leading" secondItem="L0V-of-SmQ" secondAttribute="leading" id="jfL-3G-hn0"/>
+                                    <constraint firstAttribute="trailing" secondItem="4dL-fu-uej" secondAttribute="trailing" id="oK0-eW-WOP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -114,6 +119,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="4dL-fu-uej" id="zkI-MS-PBi"/>
                         <outlet property="loginView" destination="L0V-of-SmQ" id="qKl-Gq-6Od"/>
                         <outlet property="netIdTextField" destination="WSh-hb-hkS" id="BIY-HQ-7Pr"/>
                         <outlet property="netIdView" destination="ZbM-3q-1uV" id="Xpm-2X-CgO"/>
@@ -935,7 +941,7 @@
                                                     <rect key="frame" x="20" y="8" width="335" height="38"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="rideLocationChanged:" destination="Jd8-Oi-03p" eventType="editingChanged" id="yY8-yR-597"/>
                                                         <outlet property="delegate" destination="Jd8-Oi-03p" id="mjm-aI-m37"/>
@@ -961,7 +967,7 @@
                                                     <rect key="frame" x="20" y="8" width="335" height="39"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="rideLocationChanged:" destination="Jd8-Oi-03p" eventType="editingChanged" id="WM2-ns-XQh"/>
                                                         <outlet property="delegate" destination="Jd8-Oi-03p" id="xff-ZD-yAw"/>
