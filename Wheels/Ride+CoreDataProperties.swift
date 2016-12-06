@@ -1,9 +1,9 @@
 //
 //  Ride+CoreDataProperties.swift
-//  Wheels
+//  
 //
-//  Created by Christopher Chute on 11/1/16.
-//  Copyright © 2016 Christopher Chute. All rights reserved.
+//  Created by Christopher Chute on 12/6/16.
+//
 //
 
 import Foundation
@@ -18,8 +18,9 @@ extension Ride {
 
     @NSManaged public var dateAndTime: NSDate?
     @NSManaged public var fromAddress: String?
-    @NSManaged public var toAddress: String?
     @NSManaged public var needsWheelchair: Bool
+    @NSManaged public var toAddress: String?
+    @NSManaged public var guid: String?
     @NSManaged public var rider: Rider?
 
 }

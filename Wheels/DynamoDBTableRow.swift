@@ -15,6 +15,7 @@ class DynamoDBTableRow : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     var fromAddress: String?
     var toAddress: String?
     var needsWheelchair: NSNumber? = 0
+    var guid: String?
     
     class func dynamoDBTableName() -> String {
         return DynamoDBConstants.ridesTableName
@@ -37,18 +38,22 @@ class DynamoDBTableRow : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
         if let netId = ride.rider?.netId,
             let fromAddress = ride.fromAddress,
             let toAddress = ride.toAddress,
-            let date = ride.dateAndTime {
-            return DynamoDBTableRow.fromRideInfo(for: netId, at: date, from: fromAddress, to: toAddress, needsWheelchair: ride.needsWheelchair)
+            let date = ride.dateAndTime,
+            let guid = ride.guid {
+            Debug.log("Successfully created DynamoDBTableRow from Ride.")
+            return DynamoDBTableRow.fromRideInfo(for: netId, at: date, from: fromAddress, to: toAddress, needsWheelchair: ride.needsWheelchair, guid: guid)
         }
+        Debug.log("Failed to create DynamoDBTableRow from Ride.")
         return nil
     }
     
-    private class func fromRideInfo(for rider: String, at dateAndTime: NSDate, from fromAddress: String, to toAddress: String, needsWheelchair: Bool) -> DynamoDBTableRow? {
+    private class func fromRideInfo(for rider: String, at dateAndTime: NSDate, from fromAddress: String, to toAddress: String, needsWheelchair: Bool, guid: String) -> DynamoDBTableRow? {
         let row = DynamoDBTableRow()
         row?.netId = rider
         row?.fromAddress = fromAddress
         row?.toAddress = toAddress
         row?.needsWheelchair = needsWheelchair ? 1 : 0
+        row?.guid = guid
         
         row?.pickupTime = String(dateAndTime.timeIntervalSince1970)
         Debug.log("Set pickup time to \(row?.pickupTime)")

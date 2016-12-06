@@ -31,7 +31,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
     
     // MARK: Synchronize with AWS DynamoDB.
     private func setupTable() {
-        //See if the test table exists.
+        // See if the test table exists.
         DynamoDBManager.describeTable()?.continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask!) -> AnyObject! in
             // Display an alert if cannot connect to DynamoDB table.
             if let error = task.error {
@@ -54,7 +54,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         let ridesRequest: NSFetchRequest<Ride> = Ride.fetchRequest()
         
         // We request future rides associated with the rider that's logged in.
-        ridesRequest.predicate = NSPredicate(format: "rider.netId == %@ and dateAndTime > now()", rider.netId!)
+        ridesRequest.predicate = NSPredicate(format: "rider.netId == %@ && dateAndTime > now()", rider.netId!)
         ridesRequest.sortDescriptors = [NSSortDescriptor(key: "dateAndTime", ascending: true)]
 
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: ridesRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
@@ -75,6 +75,7 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
             ride.dateAndTime = dateAndTime
             ride.needsWheelchair = needsWheelchair
             ride.rider = self.rider
+            ride.guid = NSUUID().uuidString
             
             do {
                 try moc.save()
@@ -252,10 +253,11 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
                             if let fromAddress = row.fromAddress,
                                 let toAddress = row.toAddress,
                                 let pickupTime = row.pickupTime,
-                                let needsWheelchairNSNumber = row.needsWheelchair {
+                                let needsWheelchairNSNumber = row.needsWheelchair,
+                                let guid = row.guid {
                                 if let epoch = Double(pickupTime) {
                                     let dateAndTime = NSDate(timeIntervalSince1970: TimeInterval(epoch))
-                                    _ = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: dateAndTime, withWheelchair: Bool(needsWheelchairNSNumber), in: self.moc)
+                                    _ = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: dateAndTime, withWheelchair: Bool(needsWheelchairNSNumber), guid: guid, in: self.moc)
                                 }
                             }
                         }

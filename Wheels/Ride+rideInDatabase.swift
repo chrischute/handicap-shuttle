@@ -13,20 +13,22 @@ extension Ride {
     /**
      * Insert a ride with given properties in the database.
      */
-    class func rideInDatabase(for rider: Rider, from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool, in moc: NSManagedObjectContext) -> Ride? {
+    class func rideInDatabase(for rider: Rider, from src: String, to dest: String, at dateAndTime: NSDate, withWheelchair needsWheelchair: Bool, guid: String?, in moc: NSManagedObjectContext) -> Ride? {
 
         // Check whether this ride already exists in CoreData.
-        let fetchRequest: NSFetchRequest<Ride> = Ride.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "rider == %@ && fromAddress == %@ && dateAndTime == %@", rider, src, dateAndTime)
-        var oldRide: Ride? = nil
-        do {
-            oldRide = try moc.fetch(fetchRequest).first
-        } catch {
-            Debug.log("rideInDatabase: Error executing fetch request for ride.")
-        }
-        if oldRide != nil {
-            Debug.log("Already had ride from \(src) to \(dest) for rider with netId \(rider.netId)")
-            return oldRide
+        if let uniqueId = guid {
+            let fetchRequest: NSFetchRequest<Ride> = Ride.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "guid == %@", uniqueId)
+            var oldRide: Ride? = nil
+            do {
+                oldRide = try moc.fetch(fetchRequest).first
+            } catch {
+                Debug.log("rideInDatabase: Error executing fetch request for ride.")
+            }
+            if oldRide != nil {
+                Debug.log("Already had ride from \(src) to \(dest) for rider with netId \(rider.netId)")
+                return oldRide
+            }
         }
         
         // Ride does not exist in CoreData yet. Insert new ride in the database.
@@ -37,6 +39,7 @@ extension Ride {
             newRide.toAddress = dest
             newRide.dateAndTime = dateAndTime
             newRide.needsWheelchair = needsWheelchair
+            newRide.guid = NSUUID().uuidString
             
             do {
                 try moc.save()

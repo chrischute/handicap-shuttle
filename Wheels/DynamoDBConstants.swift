@@ -15,5 +15,6 @@ class DynamoDBConstants {
     static let pickupTimeKeyName = "pickupTime"
     static let fromAddressAttributeName = "fromAddress"
     static let toAddressAttributeName = "toAddress"
+    static let guidAttributeName = "guid"
     static let needsWheelchairAttributeName = "needsWheelchair"
 }

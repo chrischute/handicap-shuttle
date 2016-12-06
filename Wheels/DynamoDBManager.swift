@@ -56,11 +56,15 @@ class DynamoDBManager : NSObject {
         needsWheelchairAttributeDefinition?.attributeName = DynamoDBConstants.needsWheelchairAttributeName
         needsWheelchairAttributeDefinition?.attributeType = AWSDynamoDBScalarAttributeType.S
         
+        let guidAttributeDefinition = AWSDynamoDBAttributeDefinition()
+        guidAttributeDefinition?.attributeName = DynamoDBConstants.guidAttributeName
+        guidAttributeDefinition?.attributeType = AWSDynamoDBScalarAttributeType.S
+
         let provisionedThroughput = AWSDynamoDBProvisionedThroughput()
         provisionedThroughput?.readCapacityUnits = 5
         provisionedThroughput?.writeCapacityUnits = 5
         
-        // Create Global Secondary Index. None here.
+        // Create Global Secondary Index. This part is done online.
         
         // Create Table Input.
         let createTableInput = AWSDynamoDBCreateTableInput()

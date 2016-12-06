@@ -43,12 +43,11 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         
         if let fromAddress = fromAddressTextField.text, let toAddress = toAddressTextField.text {
             // Insert ride in database, pickup time initializes to 5 min from now.
-            if let onDemandRide = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: NSDate.init(timeIntervalSinceNow: 300.0), withWheelchair: needsWheelchair, in: self.moc) {
+            if let onDemandRide = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: NSDate.init(timeIntervalSinceNow: 300.0), withWheelchair: needsWheelchair, guid: nil, in: self.moc) {
                 // Ride created locally, now send it to the DynamoDB table.
                 if let onDemandRideRow = DynamoDBTableRow.fromRideInfo(onDemandRide) {
                     dynamoInsertRow(onDemandRideRow)
                 }
-                
             }
         }
     }
