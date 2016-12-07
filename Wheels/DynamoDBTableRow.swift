@@ -44,6 +44,7 @@ class DynamoDBTableRow : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
             return DynamoDBTableRow.fromRideInfo(for: netId, at: date, from: fromAddress, to: toAddress, needsWheelchair: ride.needsWheelchair, guid: guid)
         }
         Debug.log("Failed to create DynamoDBTableRow from Ride.")
+        Debug.log("Ride for \(ride.rider?.netId) from \(ride.fromAddress) to \(ride.toAddress) on \(ride.dateAndTime) with guid \(ride.guid)")
         return nil
     }
     

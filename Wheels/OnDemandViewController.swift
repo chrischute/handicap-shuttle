@@ -60,7 +60,7 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
 
         // Enable ride request button if there's text in both address fields,
         // otherwise disable it. Fade in the effect of enabling or disabling.
-        // Aqua color has (R = 0, G = 128, B = 255).
+        // Aqua color has (R = 41, G = 157, B = 242).
         if let fromAddressChars = fromAddressTextField.text?.characters,
             let toAddressChars = toAddressTextField.text?.characters {
             if fromAddressChars.count > 0 && toAddressChars.count > 0 {
@@ -159,6 +159,8 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
     private func dynamoInsertRow(_ row: DynamoDBTableRow) {
         let objectMapper = AWSDynamoDBObjectMapper.default()
         
+        // Try saving this row in the DynamoDB rides table.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         objectMapper.save(row).continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask<AnyObject>!) -> AnyObject! in
             if let error = task.error {
                 // Failed to insert row into Dynamo table. Display error.
@@ -174,6 +176,7 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
             }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             return nil
         })
     }

@@ -134,7 +134,20 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
     func cancelRide() {
         // Delete the ride that was just selected.
         if let indexPath = tableView.indexPathForSelectedRow {
-            moc.delete(fetchedResultsController.object(at: indexPath))
+            let ride = fetchedResultsController.object(at: indexPath)
+            
+            // (Remote) Remove from DynamoDB.
+            if let rowForRide = DynamoDBTableRow.fromRideInfo(ride) {
+                dynamoDeleteRow(rowForRide)
+            }
+            
+            // (Local) Remove from CoreData.
+            moc.delete(ride)
+            do {
+                try moc.save()
+            } catch {
+                Debug.log("Error saving moc after deleting a ride.")
+            }
         } else {
             Debug.log("No selected row when trying to delete a ride.")
         }
@@ -201,11 +214,14 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         }
     }
     
-    // MARK: Dynamo Insert a New Ride
+    // MARK: Dynamo Insert or Delete a New Ride
     private func dynamoInsertRow(_ row: DynamoDBTableRow) {
         let objectMapper = AWSDynamoDBObjectMapper.default()
         
+        // Try to insert the row in the DynamoDB table.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         objectMapper.save(row).continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask<AnyObject>!) -> AnyObject! in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = task.error {
                 // Failed to insert row into Dynamo table. Display error.
                 Debug.log("AWS Error: \(error.localizedDescription)")
@@ -219,6 +235,32 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
                 let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
+            }
+            return nil
+        })
+    }
+    
+    private func dynamoDeleteRow(_ row: DynamoDBTableRow) {
+        let objectMapper = AWSDynamoDBObjectMapper.default()
+        
+        // Try to delete the row from the DynamoDB table.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        objectMapper.remove(row).continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask<AnyObject>!) -> AnyObject! in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if let error = task.error {
+                // Failed to removed row. Display an alert to notify.
+                Debug.log("Unable to delete ride: \(error.localizedDescription)")
+                let alert = UIAlertController(title: "Cannot Reach Server", message: "Your ride has not been cancelled. Please try again.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                // Successfully removed row. Display an alert to notify.
+                let alert = UIAlertController(title: "Cancelled", message: "Your ride has been cancelled.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+                
             }
             return nil
         })
@@ -238,7 +280,9 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         ]
         
         // Execute the query for all rides with the current user's netID.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         objectMapper.query(DynamoDBTableRow.self, expression: queryForNetId).continue({ (task: AWSTask<AWSDynamoDBPaginatedOutput>!) -> AnyObject! in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = task.error {
                 Debug.log("Query Error: \(error.localizedDescription)")
                 let alert = UIAlertController(title: "Cannot Connect to Server", message: "Cannot connect to central server.", preferredStyle: .alert)
