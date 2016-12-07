@@ -33,6 +33,8 @@ extension Ride {
             if oldRide != nil {
                 Debug.log("Already had ride from \(src) to \(dest) for rider with netId \(rider.netId)")
                 return oldRide
+            } else {
+                Debug.log("Did not find ride with GUID \(guid)")
             }
         }
 
@@ -44,7 +46,11 @@ extension Ride {
             newRide.toAddress = dest
             newRide.dateAndTime = dateAndTime
             newRide.needsWheelchair = needsWheelchair
-            newRide.guid = NSUUID().uuidString
+            if let oldGuid = guid {
+                newRide.guid = oldGuid
+            } else {
+                newRide.guid = NSUUID().uuidString
+            }
             
             do {
                 try moc.save()

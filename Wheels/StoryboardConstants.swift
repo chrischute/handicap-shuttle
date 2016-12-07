@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class StoryboardConstants {
     /* Segues */
@@ -44,4 +45,20 @@ class StoryboardConstants {
     static let dispatchPhoneNumber = "2034322788"
     static let studentRequestFormURL = "http://your.yale.edu/sites/default/files/files/StudentRequestformforSpecialServicesVanTransportation.pdf"
     static let employeeRequestFormURL = "http://your.yale.edu/sites/default/files/files/Special%20Service%20Van%20Form%20updated%2003_27_12.pdf"
+    static let secondsUntilPickupForOnDemandRide = 300.0
+}
+
+// Credit: @Sulthan on Stack Overflow
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+
+    convenience init(hexValue: Int) {
+        self.init(red: (hexValue >> 16) & 0xff, green: (hexValue >> 8) & 0xff, blue: hexValue & 0xff)
+    }
 }

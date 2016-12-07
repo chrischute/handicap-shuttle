@@ -25,21 +25,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if netIdChars.count > 0 && passwordChars.count > 0 {
                 if !loginButton.isEnabled {
                     loginButton.isEnabled = true
-                    loginButton.setTitleColor(UIColor.darkGray, for: .normal)
                     UIView.animate(withDuration: 0.15,
                                    delay: 0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
-                                   animations: { self.loginView.backgroundColor = UIColor.yellow },
+                                   animations: { self.loginView.backgroundColor = UIColor(hexValue: 0x0000FF) },
                                    completion: nil)
                 }
             } else {
                 if loginButton.isEnabled {
                     loginButton.isEnabled = false
-                    loginButton.setTitleColor(UIColor.white, for: .normal)
                     UIView.animate(withDuration: 0.15,
                                    delay: 0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
-                                   animations: { self.loginView.backgroundColor = UIColor.lightGray },
+                                   animations: { self.loginView.backgroundColor = UIColor(hexValue: 0xCCCCCC) },
                                    completion: nil)
                 }
             }

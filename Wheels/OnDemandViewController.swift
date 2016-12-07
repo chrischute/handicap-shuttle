@@ -38,18 +38,17 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
     
     // MARK: Address Entry Actions
     @IBAction func requestRidePressed(_ sender: UIButton) {
-        // TODO: Get accessibility for on-demand rides.
-        let needsWheelchair = true
-        
-        if let fromAddress = fromAddressTextField.text, let toAddress = toAddressTextField.text {
-            // Insert ride in database, pickup time initializes to 5 min from now.
-            if let onDemandRide = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: NSDate.init(timeIntervalSinceNow: 300.0), withWheelchair: needsWheelchair, guid: nil, in: self.moc) {
-                // Ride created locally, now send it to the DynamoDB table.
-                if let onDemandRideRow = DynamoDBTableRow.fromRideInfo(onDemandRide) {
-                    dynamoInsertRow(onDemandRideRow)
-                }
-            }
-        }
+        // TODO: Get accessibility using a switch instead of an alert?
+        let alert = UIAlertController(title: "Wheelchair", message: "Do you need a wheelchair-accessible van?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .cancel, handler: { (action: UIAlertAction) in
+            self.requestRideOnDemand(needsWheelchair: true)
+        })
+        let noAction = UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction) in
+            self.requestRideOnDemand(needsWheelchair: false)
+        })
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        present(alert, animated: true, completion: nil)
     }
     @IBAction func editAddressDidChange(_ sender: UITextField) {
         if sender == fromAddressTextField {
@@ -138,6 +137,23 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         
         // Make keyboard disappear when tapping outside its bounds.
         setKeyboardAutoHiding(true)
+    }
+    
+    private func requestRideOnDemand(needsWheelchair: Bool) {
+        // Add the ride to t
+        if let fromAddress = fromAddressTextField.text, let toAddress = toAddressTextField.text {
+            // Insert ride in database, pickup time initializes to 5 min from now.
+            if let onDemandRide = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: NSDate.init(timeIntervalSinceNow: StoryboardConstants.secondsUntilPickupForOnDemandRide), withWheelchair: needsWheelchair, guid: nil, in: self.moc) {
+                // Ride created locally, now send it to the DynamoDB table.
+                if let onDemandRideRow = DynamoDBTableRow.fromRideInfo(onDemandRide) {
+                    dynamoInsertRow(onDemandRideRow)
+                }
+            }
+        }
+        // Clear the text fields.
+        fromAddressTextField.text = ""
+        toAddressTextField.text = ""
+        toAddressTextField.resignFirstResponder()
     }
     
     // MARK: UIBarPositioningDelegate
