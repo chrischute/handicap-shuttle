@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 
 class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegate, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
-    var locationManager: CLLocationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             // Initialize to standard view with VC as delegate.
@@ -23,8 +23,6 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
             let initialMapSpan = MKCoordinateSpanMake(StoryboardConstants.initialMapViewWidth,
                                                       StoryboardConstants.initialMapViewHeight)
             mapView.setRegion(MKCoordinateRegionMake(initialMapCenter, initialMapSpan), animated: true)
-            mapView.showsUserLocation = true
-            mapView.showsCompass = true
         }
     }
     // MARK: Address Entry Outlets
@@ -34,6 +32,13 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
     @IBOutlet weak var toAddressView: UIView!
     @IBOutlet weak var requestRideView: UIView!
     @IBOutlet weak var requestRideButton: UIButton!
+    @IBOutlet weak var zoomToUserLocationView: UIView!
+    @IBAction func zoomToUserLocation(_ sender: UIButton) {
+        if let userCoordinate = mapView.userLocation.location?.coordinate {
+            let region = MKCoordinateRegionMakeWithDistance(userCoordinate, 10000, 10000)
+            mapView.setRegion(region, animated: true)
+        }
+    }
     
     
     // MARK: Address Entry Actions
@@ -127,6 +132,10 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up user location management.
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
         // Round the corners of address fields and button.
         fromAddressView.layer.cornerRadius = 5
         fromAddressView.layer.masksToBounds = true
@@ -134,6 +143,8 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         toAddressView.layer.masksToBounds = true
         requestRideView.layer.cornerRadius = 5
         requestRideView.layer.masksToBounds = true
+        zoomToUserLocationView.layer.cornerRadius = 5
+        zoomToUserLocationView.layer.masksToBounds = true
         
         // Make keyboard disappear when tapping outside its bounds.
         setKeyboardAutoHiding(true)
@@ -195,5 +206,11 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             return nil
         })
+    }
+    
+    // MARK: CLLocationManagerDelegate Implementation
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        // Show the user location if authorized.
+        self.mapView.showsUserLocation = (status == .authorizedWhenInUse)
     }
 }
