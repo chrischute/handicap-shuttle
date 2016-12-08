@@ -17,6 +17,7 @@
 		2006FF9B1DC922040094C668 /* NewScheduledRideRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF9A1DC922040094C668 /* NewScheduledRideRootViewController.swift */; };
 		2006FF9D1DC9335F0094C668 /* UIViewController+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006FF9C1DC9335F0094C668 /* UIViewController+dismissKeyboard.swift */; };
 		20113C0C1DD3E83B0050EA75 /* ShuttleInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20113C0B1DD3E83B0050EA75 /* ShuttleInfoTableViewController.swift */; };
+		202707EB1DF9B9DF00D3695F /* SSS.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 202707EA1DF9B9DF00D3695F /* SSS.gpx */; };
 		20491FFD1DF884E4008423DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20491FFC1DF884E4008423DB /* Assets.xcassets */; };
 		2049AAD11DC7902E00B2713A /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */; };
 		2049AAD81DC79A3400B2713A /* Rider+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */; };
@@ -51,6 +52,7 @@
 		2006FF9A1DC922040094C668 /* NewScheduledRideRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewScheduledRideRootViewController.swift; path = Wheels/NewScheduledRideRootViewController.swift; sourceTree = "<group>"; };
 		2006FF9C1DC9335F0094C668 /* UIViewController+dismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		20113C0B1DD3E83B0050EA75 /* ShuttleInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShuttleInfoTableViewController.swift; path = Wheels/ShuttleInfoTableViewController.swift; sourceTree = "<group>"; };
+		202707EA1DF9B9DF00D3695F /* SSS.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SSS.gpx; sourceTree = "<group>"; };
 		20491FFC1DF884E4008423DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2049AAD01DC7902E00B2713A /* StoryboardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
 		2049AAD61DC79A3400B2713A /* Rider+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rider+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 			name = Rider;
 			sourceTree = "<group>";
 		};
+		202707E91DF9B9CE00D3695F /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				202707EA1DF9B9DF00D3695F /* SSS.gpx */,
+			);
+			name = Testing;
+			sourceTree = "<group>";
+		};
 		2049AACF1DC78CD700B2713A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 		20A763921DC69777000A776E /* Wheels */ = {
 			isa = PBXGroup;
 			children = (
+				202707E91DF9B9CE00D3695F /* Testing */,
 				2049AACF1DC78CD700B2713A /* Core Data */,
 				20062C181DF4F05800C6B9B8 /* DynamoDB */,
 				20A763AA1DC6C924000A776E /* Login */,
@@ -344,6 +355,7 @@
 			files = (
 				20A763A11DC69777000A776E /* LaunchScreen.storyboard in Resources */,
 				20491FFD1DF884E4008423DB /* Assets.xcassets in Resources */,
+				202707EB1DF9B9DF00D3695F /* SSS.gpx in Resources */,
 				20A763991DC69777000A776E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

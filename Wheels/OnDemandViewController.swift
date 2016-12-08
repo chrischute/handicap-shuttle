@@ -22,7 +22,8 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
                                                               StoryboardConstants.sterlingMemorialLibraryLongitude)
             let initialMapSpan = MKCoordinateSpanMake(StoryboardConstants.initialMapViewWidth,
                                                       StoryboardConstants.initialMapViewHeight)
-            mapView.setRegion(MKCoordinateRegionMake(initialMapCenter, initialMapSpan), animated: true)
+            let initialMapRegion = MKCoordinateRegionMake(initialMapCenter, initialMapSpan)
+            mapView.setRegion(initialMapRegion, animated: true)
         }
     }
     // MARK: Address Entry Outlets
@@ -33,13 +34,22 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
     @IBOutlet weak var requestRideView: UIView!
     @IBOutlet weak var requestRideButton: UIButton!
     @IBOutlet weak var zoomToUserLocationView: UIView!
+    @IBOutlet weak var userLocationButton: UIButton!
     @IBAction func zoomToUserLocation(_ sender: UIButton) {
-        if let userCoordinate = mapView.userLocation.location?.coordinate {
-            let region = MKCoordinateRegionMakeWithDistance(userCoordinate, 10000, 10000)
-            mapView.setRegion(region, animated: true)
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        if authorizationStatus != .authorizedWhenInUse && authorizationStatus != .authorizedAlways {
+            let alert = UIAlertController(title: "Location Not Enabled", message: "To use your GPS location, you must enable Location Services for Wheels.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        } else if let userCoordinate = mapView.userLocation.location?.coordinate {
+            
+            let initialMapSpan = MKCoordinateSpanMake(StoryboardConstants.initialMapViewWidth,
+                                                      StoryboardConstants.initialMapViewHeight)
+            let centeredOnUser = MKCoordinateRegionMake(userCoordinate, initialMapSpan)
+            mapView.setRegion(centeredOnUser, animated: true)
         }
     }
-    
     
     // MARK: Address Entry Actions
     @IBAction func requestRidePressed(_ sender: UIButton) {
@@ -148,6 +158,12 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         
         // Make keyboard disappear when tapping outside its bounds.
         setKeyboardAutoHiding(true)
+        
+        // Color the user location button.
+        let currentLocationImage = UIImage(named: "CurrentLocation");
+        let tintedImage = currentLocationImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        userLocationButton.setImage(tintedImage, for: UIControlState.normal)
+        userLocationButton.tintColor = UIColor(hexValue: StoryboardConstants.aquaColorHexValue)
     }
     
     private func requestRideOnDemand(needsWheelchair: Bool) {

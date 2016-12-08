@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 class StoryboardConstants {
+    /* Colors */
+    static let aquaColorHexValue = 0x0080FF
+    
     /* Segues */
     static let loginSegueId = "loginSegue"
     static let newScheduledRideSegueId = "newScheduledRideSegue"

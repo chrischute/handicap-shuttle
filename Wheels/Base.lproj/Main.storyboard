@@ -491,6 +491,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkr-Bi-gu3">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="CurrentLocation">
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -542,6 +543,7 @@
                         <outlet property="requestRideView" destination="jOo-cm-Fob" id="RUn-iR-Rb0"/>
                         <outlet property="toAddressTextField" destination="4ar-Jx-20F" id="MkX-ST-oMc"/>
                         <outlet property="toAddressView" destination="zDV-Zg-TYG" id="Fue-ep-1yH"/>
+                        <outlet property="userLocationButton" destination="gkr-Bi-gu3" id="NeF-Wj-oLM"/>
                         <outlet property="zoomToUserLocationView" destination="cWM-az-X2K" id="NeT-zZ-q71"/>
                     </connections>
                 </viewController>
