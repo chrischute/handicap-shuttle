@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+
+Adapted by: Christopher Chute
+From: <http://templated.co> (Creative Commons Attribution License).
+Project name: Wheels
+Submission date: 12-15-2016
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+<div id="logo">
+	<h1><span>Wheels</span></h1>
+	<h2><span>YALE'S SPECIAL SERVICES VAN ON iOS</span></h2>
+</div>
+<div id="header">
+	<div id="menu" class="container">
+		<ul>
+			<li class="current_page_item"><a href="#abstract-wrapper" accesskey="1" title="">Abstract</a></li>
+			<li><a href="#proposal-wrapper" accesskey="1" title="">Project Proposal</a></li>
+			<li><a href="#report-wrapper" accesskey="3" title="">Final Report</a></li>
+			<li><a href="#screenshots-wrapper" accesskey="2" title="">Screenshots</a></li>
+			<li><a href="#source-code-wrapper" accesskey="4" title="">Source Code</a></li>
+		</ul>
+	</div>
+</div>
+<div id="abstract-wrapper" class="wrapper">
+	<div id="abstract" class="container">
+		<div id="content">
+			<div class="major">
+				<h2>Abstract</h2>
+			</div>
+			<!--
+			<div class="title">
+				<h2>Yale's Special Services Van</h2>
+				<span class="byline">Now on your iOS device.</span>
+			</div>
+			-->
+			<p>
+				<strong>Wheels</strong> is an iOS application for scheduling rides with Yale's Special Services Van. The app's objective is to replace its predecessor system for scheduling rides at Yale. In the previous system, users were required to call the Special Services dispatcher and provide the details (time, address, and accessibility requirements) for each ride. This system was inconvenient and had low bandwidth for scheduling rides. Wheels provides an iOS interface that makes it easy to schedule recurring rides, one-off rides, and view your existing schedule. Moreover, users can request to be picked up at their current GPS location. Wheels synchronizes through Amazon Web Services' (AWS) DynamoDB. All users' rides are stored in a DynamoDB table, and, using AWS Lambda triggers, the dispatcher receives notifications when a ride is scheduled, deleted, or needs to be executed. In short, Wheels replaces both the student-dispatcher communication channel and the centralized data store for rides on Yale's Special Services Van.
+			</p>
+		</div>
+		<div id="wheels-icon"><a href="#" class="image image-full"><img src="images/wheels-icon.png" alt="" /></a></div>
+	</div>
+</div>
+<div id="proposal-wrapper" class="wrapper">
+	<div id="proposal">
+		<div class="major">
+			<h2>Project Proposal</h2>
+		</div>
+		<p>
+			The scheduling system for Yale's handicap shuttle service, also known as the Special Services Van, is largely obsolete. If you want to schedule a ride, you call the Special Services Van Dispatch at (203) 432-2788, and schedule a ride with a dispatcher. The process takes an average of about three minutes, during which the dispatcher negotiates a pick-up time. There are often conflicts, especially in the morning, and the dispatcher must list the options of times to be picked up. Moreover, drivers often go to the wrong spot (they are only given an address), and there is no functionality to take your course schedule into account. The time wasted dealing with this system is especially precious, since handicapped students are often more time-constrained than their peers.
+		</p>
+		<p>
+			My goal is to build a modern system to schedule rides with the Special Services Van at Yale. The deliverables will be an iOS application and (secondarily and with limited functionality) a web interface for requesting shuttle rides. The app must address the issues laid out above to be effective, and I will work to make sure it actually gets adopted by Yale Special Services.
+		</p>
+	</div>
+</div>
+<div id="report-wrapper" class="wrapper">
+	<div id="report">
+		<div class="major">
+			<h2>Final Report</h2>
+		</div>
+		<p>
+			My final report text will go here.
+		</p>
+	</div>
+</div>
+<div id="screenshots-wrapper" class="wrapper">
+	<div id="screenshots">
+		<div class="major">
+			<h2>Screenshots</h2>
+		</div>
+		<span id="screenshot-1" class="ios-screenshot">
+			<img src="images/screenshot-1.png" />
+		</span>
+		<span id="screenshot-2" class="ios-screenshot">
+			<img src="images/screenshot-2.png" />
+		</span>
+		<span id="screenshot-3" class="ios-screenshot">
+			<img src="images/screenshot-3.png" />
+		</span>
+		<span id="screenshot-4" class="ios-screenshot">
+			<img src="images/screenshot-4.png" />
+		</span>
+		<span id="screenshot-5" class="ios-screenshot">
+			<img src="images/screenshot-5.png" />
+		</span>
+	</div>
+</div>
+<div id="source-code-wrapper" class="wrapper">
+	<div id="source-code">
+		<div class="major">
+			<h2>Source Code</h2>
+		</div>
+		<div id="source-download-container">
+			<a href="./Wheels.zip" class="icon icon-download" id="source-download-link"><span></span></a>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<!-- 
+	<div class="major">
+		<h2>Attribution</h2>
+	</div> 
+	-->
+	<p>Special thanks to <a href="http://www.cs.yale.edu/homes/aspnes/">Professor James Aspnes</a> and <a href="http://cpsc.yale.edu">Yale University</a>.</p>
+	<p>Christopher Chute | Yale Class of 2017</p>
+	<div id="contact" class="container">
+		<ul class="contact">
+			<li><a href="https://github.com/chrischute" class="icon icon-github"><span></span></a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
