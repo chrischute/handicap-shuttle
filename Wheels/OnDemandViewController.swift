@@ -43,11 +43,16 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         } else if let userCoordinate = mapView.userLocation.location?.coordinate {
-            
+            // Zoom to the user's location.
             let initialMapSpan = MKCoordinateSpanMake(StoryboardConstants.initialMapViewWidth,
                                                       StoryboardConstants.initialMapViewHeight)
             let centeredOnUser = MKCoordinateRegionMake(userCoordinate, initialMapSpan)
             mapView.setRegion(centeredOnUser, animated: true)
+            // Set the pickup address to the user's location.
+            editAddressDidBegin(fromAddressTextField)
+            fromAddressTextField.text = "Current Location"
+            editAddressDidChange(fromAddressTextField)
+            editAddressDidEnd(fromAddressTextField)
         }
     }
     
@@ -83,7 +88,7 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
                     UIView.animate(withDuration: 0.5,
                                    delay: 0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
-                                   animations: { self.requestRideView.backgroundColor = UIColor.init(red: (41 / 255.0), green: (157 / 255.0), blue: (242 / 255.0), alpha: 1.0) },
+                                   animations: { self.requestRideView.backgroundColor = UIColor(hexValue: StoryboardConstants.aquaColorHexValue).withAlphaComponent(1.0) },
                                    completion: nil)
                 }
             } else {
@@ -94,6 +99,13 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
                                    options: UIViewAnimationOptions.allowUserInteraction,
                                    animations: { self.requestRideView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8) },
                                    completion: nil)
+                }
+            }
+            if let fromAddress = fromAddressTextField.text {
+                if fromAddress == "Current Location" {
+                    fromAddressTextField.textColor = UIColor(hexValue: StoryboardConstants.aquaColorHexValue)
+                } else {
+                    fromAddressTextField.textColor = UIColor.black
                 }
             }
         }
@@ -168,7 +180,13 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
     
     private func requestRideOnDemand(needsWheelchair: Bool) {
         // Add the ride to t
-        if let fromAddress = fromAddressTextField.text, let toAddress = toAddressTextField.text {
+        if var fromAddress = fromAddressTextField.text, let toAddress = toAddressTextField.text {
+            // Check if request is based on user's current location.
+            if fromAddress == "Current Location" {
+                if let userCoordinate = mapView.userLocation.location?.coordinate {
+                    fromAddress = "GPS(\(userCoordinate.latitude),\(userCoordinate.longitude))"
+                }
+            }
             // Insert ride in database, pickup time initializes to 5 min from now.
             if let onDemandRide = Ride.rideInDatabase(for: self.rider, from: fromAddress, to: toAddress, at: NSDate.init(timeIntervalSinceNow: StoryboardConstants.secondsUntilPickupForOnDemandRide), withWheelchair: needsWheelchair, guid: nil, in: self.moc) {
                 // Ride created locally, now send it to the DynamoDB table.
@@ -179,7 +197,11 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         }
         // Clear the text fields.
         fromAddressTextField.text = ""
+        editAddressDidChange(fromAddressTextField)
+        editAddressDidEnd(fromAddressTextField)
         toAddressTextField.text = ""
+        editAddressDidChange(toAddressTextField)
+        editAddressDidEnd(toAddressTextField)
         toAddressTextField.resignFirstResponder()
     }
     
@@ -205,6 +227,7 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         // Try saving this row in the DynamoDB rides table.
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         objectMapper.save(row).continue(with: AWSExecutor.mainThread(), with: { (task: AWSTask<AnyObject>!) -> AnyObject! in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = task.error {
                 // Failed to insert row into Dynamo table. Display error.
                 Debug.log("AWS Error: \(error.localizedDescription)")
@@ -214,12 +237,11 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
                 self.present(alert, animated: true, completion: nil)
             } else {
                 // Successfully inserted row into Dynamo table.
-                let alert = UIAlertController(title: "Success", message: "Your ride request has been submitted.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Success", message: "Your ride request has been submitted. You will be notified when your driver is en route.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
             }
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             return nil
         })
     }

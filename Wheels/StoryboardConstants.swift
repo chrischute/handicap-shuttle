@@ -12,6 +12,8 @@ import UIKit
 class StoryboardConstants {
     /* Colors */
     static let aquaColorHexValue = 0x0080FF
+    static let loginEnabledHexValue = 0x004080
+    static let buttonDisabledHexValue = 0xCCCCCC
     
     /* Segues */
     static let loginSegueId = "loginSegue"

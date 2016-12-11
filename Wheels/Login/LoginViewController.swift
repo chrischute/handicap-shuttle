@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0.15,
                                    delay: 0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
-                                   animations: { self.loginView.backgroundColor = UIColor(hexValue: 0x0000FF) },
+                                   animations: { self.loginView.backgroundColor = UIColor(hexValue: StoryboardConstants.loginEnabledHexValue).withAlphaComponent(1.0) },
                                    completion: nil)
                 }
             } else {
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0.15,
                                    delay: 0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
-                                   animations: { self.loginView.backgroundColor = UIColor(hexValue: 0xCCCCCC) },
+                                   animations: { self.loginView.backgroundColor = UIColor(hexValue: StoryboardConstants.buttonDisabledHexValue).withAlphaComponent(1.0) },
                                    completion: nil)
                 }
             }

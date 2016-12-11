@@ -1,11 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
-
-Adapted by: Christopher Chute
-From: <http://templated.co> (Creative Commons Attribution License).
+Author: Christopher Chute
 Project name: Wheels
 Submission date: 12-15-2016
-
+Web design adapted from: <http://templated.co> (Creative Commons License).
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -40,14 +38,8 @@ Submission date: 12-15-2016
 			<div class="major">
 				<h2>Abstract</h2>
 			</div>
-			<!--
-			<div class="title">
-				<h2>Yale's Special Services Van</h2>
-				<span class="byline">Now on your iOS device.</span>
-			</div>
-			-->
 			<p>
-				<strong>Wheels</strong> is an iOS application for scheduling rides with Yale's Special Services Van. The app's objective is to replace its predecessor system for scheduling rides at Yale. In the previous system, users were required to call the Special Services dispatcher and provide the details (time, address, and accessibility requirements) for each ride. This system was inconvenient and had low bandwidth for scheduling rides. Wheels provides an iOS interface that makes it easy to schedule recurring rides, one-off rides, and view your existing schedule. Moreover, users can request to be picked up at their current GPS location. Wheels synchronizes through Amazon Web Services' (AWS) DynamoDB. All users' rides are stored in a DynamoDB table, and, using AWS Lambda triggers, the dispatcher receives notifications when a ride is scheduled, deleted, or needs to be executed. In short, Wheels replaces both the student-dispatcher communication channel and the centralized data store for rides on Yale's Special Services Van.
+				<strong>Wheels</strong> is an iOS application for scheduling rides with Yale's Special Services Van. The app's objective is to replace its predecessor system for scheduling rides at Yale. In the previous system, users were required to call the Special Services dispatcher and provide the details (time, address, and accessibility requirements) for each ride. This system was inconvenient and had low bandwidth for scheduling rides. People often had to wait on hold for 5-10 minutes before reaching the dispatcher, and pickup locations were often miscommunicated. By contrast, Wheels eliminates waiting for the dispatcher (since many users can schedule rides simultaneously), and rides are presented in an unambiguous summary format with GPS-based pickup information. The app allows users to schedule recurring rides, one-off rides, and view their upcoming rides. Moreover, users can request to be picked up at their current GPS location. Wheels synchronizes through Amazon Web Services' (AWS) DynamoDB. All users' rides are stored in a DynamoDB table, and, using AWS Lambda triggers, the dispatcher receives notifications when a ride is scheduled, deleted, or needs to be executed. Users are authenticated using AWS Cognito, and users are authenticated against a whitelist of Yale NetIDs with Special Services access. This backend design was chosen to combine the extensibility of DynamoDB, security of Cognito, and the reliability of AWS in general. In short, Wheels replaces both the student-dispatcher communication channel and the centralized data store for rides on Yale's Special Services Van. We hope that Wheels will improve the campus experience for injured and handicapped students, staff, and faculty.
 			</p>
 		</div>
 		<div id="wheels-icon"><a href="#" class="image image-full"><img src="images/wheels-icon.png" alt="" /></a></div>
@@ -64,6 +56,9 @@ Submission date: 12-15-2016
 		<p>
 			My goal is to build a modern system to schedule rides with the Special Services Van at Yale. The deliverables will be an iOS application and (secondarily and with limited functionality) a web interface for requesting shuttle rides. The app must address the issues laid out above to be effective, and I will work to make sure it actually gets adopted by Yale Special Services.
 		</p>
+	</div>
+	<div id="proposal-download-container">
+		<a href="files/wheels-proposal.pdf" class="icon icon-download" id="proposal-download-link" class="download-link"><span></span></a>
 	</div>
 </div>
 <div id="report-wrapper" class="wrapper">
@@ -104,21 +99,16 @@ Submission date: 12-15-2016
 			<h2>Source Code</h2>
 		</div>
 		<div id="source-download-container">
-			<a href="./Wheels.zip" class="icon icon-download" id="source-download-link"><span></span></a>
+			<a href="files/Wheels.zip" class="icon icon-download" id="source-download-link" class="download-link"><span></span></a>
 		</div>
 	</div>
 </div>
 <div id="copyright" class="container">
-	<!-- 
-	<div class="major">
-		<h2>Attribution</h2>
-	</div> 
-	-->
 	<p>Special thanks to <a href="http://www.cs.yale.edu/homes/aspnes/">Professor James Aspnes</a> and <a href="http://cpsc.yale.edu">Yale University</a>.</p>
 	<p>Christopher Chute | Yale Class of 2017</p>
 	<div id="contact" class="container">
 		<ul class="contact">
-			<li><a href="https://github.com/chrischute" class="icon icon-github"><span></span></a></li>
+			<li><a href="https://github.com/chrischute" class="icon icon-github" id="github-link"><span></span></a></li>
 		</ul>
 	</div>
 </div>

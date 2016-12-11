@@ -95,7 +95,11 @@ class PlanAheadViewController: UIViewControllerWithRider, UITableViewDataSource,
         // Fill the cell with ride information.
         let ride = fetchedResultsController.object(at: indexPath)
         cell.toAddressLabel.text = ride.toAddress
-        cell.fromAddressLabel.text = ride.fromAddress
+        if let pickupAddress = ride.fromAddress {
+            cell.fromAddressLabel.text = (pickupAddress.hasPrefix("GPS(")) ? "GPS Coords." : pickupAddress
+        } else {
+            cell.fromAddressLabel.text = ""
+        }
         cell.dateAndTimeLabel.text = StoryboardConstants.standardDateFormatter.string(from: ride.dateAndTime! as Date)
         
         // Style the cell.
