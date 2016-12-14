@@ -43,7 +43,7 @@ class EditScheduledRideViewController: UIViewController, UIBarPositioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Make fonts of 'Edit' and 'Done' match rest of app (Avenir).
+        // Make font of 'Done' button match rest of app (Avenir).
         doneButton.setTitleTextAttributes(
             [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!, NSForegroundColorAttributeName: UIColor.white],
             for: UIControlState.normal)

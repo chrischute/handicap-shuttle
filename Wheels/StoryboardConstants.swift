@@ -26,9 +26,11 @@ class StoryboardConstants {
     static let waitForRideSegueId = "waitForRideSegue"
 
     /* View Controllers */
+    static let mainPageViewControllerId = "mainPageViewController"
     static let onDemandViewControllerId = "onDemandViewController"
     static let queueViewControllerId = "queueViewController"
     static let planAheadViewControllerId = "planAheadViewController"
+    static let loginViewControllerId = "loginViewController"
 
     /* Table View Prototype Cells */
     static let scheduledRideCellId = "scheduledRideCell"
@@ -51,6 +53,10 @@ class StoryboardConstants {
     static let studentRequestFormURL = "http://your.yale.edu/sites/default/files/files/StudentRequestformforSpecialServicesVanTransportation.pdf"
     static let employeeRequestFormURL = "http://your.yale.edu/sites/default/files/files/Special%20Service%20Van%20Form%20updated%2003_27_12.pdf"
     static let secondsUntilPickupForOnDemandRide = 300.0
+    
+    /* NSUserDefaults Keys */
+    static let userIsLoggedInKey = "userIsLoggedIn"
+    static let userNetIdKey = "userNetId"
 }
 
 // Credit: @Sulthan on Stack Overflow

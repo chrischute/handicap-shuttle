@@ -219,7 +219,7 @@ class OnDemandViewController: UIViewControllerWithRider, UIBarPositioningDelegat
         
         return true
     }
-    
+
     // MARK: Dynamo Insert a New Ride
     private func dynamoInsertRow(_ row: DynamoDBTableRow) {
         let objectMapper = AWSDynamoDBObjectMapper.default()

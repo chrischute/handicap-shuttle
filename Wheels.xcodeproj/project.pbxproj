@@ -40,6 +40,8 @@
 		20A763A91DC6C917000A776E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763A81DC6C917000A776E /* LoginViewController.swift */; };
 		20A763B21DC6DFDB000A776E /* ShuttleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B11DC6DFDB000A776E /* ShuttleInfoViewController.swift */; };
 		20A763B61DC6E015000A776E /* PlanAheadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A763B51DC6E015000A776E /* PlanAheadViewController.swift */; };
+		20E4E4111E0188270038B343 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E4E4101E0188270038B343 /* SettingsViewController.swift */; };
+		20E4E4131E018B240038B343 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E4E4121E018B240038B343 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		20A763A81DC6C917000A776E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
 		20A763B11DC6DFDB000A776E /* ShuttleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShuttleInfoViewController.swift; path = Wheels/ShuttleInfoViewController.swift; sourceTree = "<group>"; };
 		20A763B51DC6E015000A776E /* PlanAheadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanAheadViewController.swift; path = Wheels/PlanAheadViewController.swift; sourceTree = "<group>"; };
+		20E4E4101E0188270038B343 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Wheels/SettingsViewController.swift; sourceTree = "<group>"; };
+		20E4E4121E018B240038B343 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = Wheels/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		6FA35FDFCD6D424371A2679E /* Pods-Wheels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wheels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wheels/Pods-Wheels.release.xcconfig"; sourceTree = "<group>"; };
 		7E74026099BEDDD6A26C023B /* Pods_Wheels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wheels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA086633F0CA4926A6F5CB03 /* Pods-Wheels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wheels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wheels/Pods-Wheels.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 		20A763AE1DC6CE50000A776E /* Main Page */ = {
 			isa = PBXGroup;
 			children = (
+				20E4E40F1E0188140038B343 /* Settings */,
 				2006FF8F1DC8D24F0094C668 /* Shuttle Info */,
 				2006FF8E1DC8D2470094C668 /* On Demand */,
 				2006FF8D1DC8D23C0094C668 /* Plan Ahead */,
@@ -271,6 +276,15 @@
 			);
 			name = "Main Page";
 			path = ..;
+			sourceTree = "<group>";
+		};
+		20E4E40F1E0188140038B343 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				20E4E4101E0188270038B343 /* SettingsViewController.swift */,
+				20E4E4121E018B240038B343 /* SettingsTableViewController.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		3ADBDA1C6937140278BB1E63 /* Frameworks */ = {
@@ -438,8 +452,10 @@
 				20A763941DC69777000A776E /* AppDelegate.swift in Sources */,
 				20062C1A1DF4F88700C6B9B8 /* DynamoDBConstants.swift in Sources */,
 				20A7639C1DC69777000A776E /* Wheels.xcdatamodeld in Sources */,
+				20E4E4111E0188270038B343 /* SettingsViewController.swift in Sources */,
 				2049AADD1DC79A8300B2713A /* Rider+CoreDataProperties.swift in Sources */,
 				208F1A4D1DC95BD400D7795B /* ScheduledRideTableViewCell.swift in Sources */,
+				20E4E4131E018B240038B343 /* SettingsTableViewController.swift in Sources */,
 				2006FF9D1DC9335F0094C668 /* UIViewController+dismissKeyboard.swift in Sources */,
 				20A763B61DC6E015000A776E /* PlanAheadViewController.swift in Sources */,
 				2071FAF61DCABACA0002810A /* RideCancellationReceiving.swift in Sources */,

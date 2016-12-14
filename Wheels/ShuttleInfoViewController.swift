@@ -19,4 +19,9 @@ class ShuttleInfoViewController: UIViewControllerWithRider, UIBarPositioningDele
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
     }
+    
+    // Unwind from the settings page back to shuttle info.
+    @IBAction func unwindFromSettingsToShuttleInfoView(segue: UIStoryboardSegue) {
+        // Do nothing.
+    }
 }

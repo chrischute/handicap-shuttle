@@ -72,6 +72,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if let netId = netIdTextField.text, let password = passwordTextField.text {
                 dest.rider = Rider.riderInDatabase(from: netId, with: password, in: moc)
                 dest.moc = moc
+                
+                // Keep track of login state.
+//                UserDefaults.standard.set(true, forKey: StoryboardConstants.userIsLoggedInKey)
+//                UserDefaults.standard.set(netId, forKey: StoryboardConstants.userNetIdKey)
+//                UserDefaults.standard.synchronize()
             }
         }
     }
@@ -110,5 +115,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             performSegue(withIdentifier: StoryboardConstants.loginSegueId, sender: self)
         }
         return true
+    }
+    
+    // Unwind from the logout button on settings page.
+    @IBAction func unwindFromSettingsToLoginView(segue: UIStoryboardSegue) {
+        // Clear text fields.
+        netIdTextField.text = ""
+        passwordTextField.text = ""
+        editingDidChange(netIdTextField)
+        netIdTextField.becomeFirstResponder()
     }
 }

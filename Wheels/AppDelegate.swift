@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Set up Amazon Cognito for US East and the "Wheels iOS App Users" identity pool.
-        // TODO: Is this best place to set up Cognito?
         let cognitoCredentialsProvider = AWSCognitoCredentialsProvider(regionType: .usEast1, identityPoolId: "us-east-1:fdc2fa28-9f2a-4f56-8061-3c72fe3e0f93")
         let cognitoConfiguration = AWSServiceConfiguration(region: .usEast1, credentialsProvider: cognitoCredentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = cognitoConfiguration
