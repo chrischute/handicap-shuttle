@@ -4,7 +4,7 @@
 \BOOKMARK [2][-]{subsection.2.2}{On-Demand Request View}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Scheduled Rides View}{section.2}% 5
 \BOOKMARK [1][-]{section.3}{Local Data Store}{}% 6
-\BOOKMARK [1][-]{section.4}{Remote Data Store \046 Back End}{}% 7
+\BOOKMARK [1][-]{section.4}{Back End Design}{}% 7
 \BOOKMARK [2][-]{subsection.4.1}{Remote Database: DynamoDB}{section.4}% 8
 \BOOKMARK [2][-]{subsection.4.2}{Interfacing with the Dispatcher}{section.4}% 9
 \BOOKMARK [2][-]{subsection.4.3}{Authentication}{section.4}% 10
@@ -14,3 +14,4 @@
 \BOOKMARK [2][-]{subsection.5.2}{Back End Principles}{section.5}% 14
 \BOOKMARK [1][-]{section.6}{Future Plans}{}% 15
 \BOOKMARK [1][-]{section.7}{Conclusion}{}% 16
+\BOOKMARK [1][-]{section.8}{Acknowledgments}{}% 17

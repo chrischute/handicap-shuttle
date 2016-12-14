@@ -571,6 +571,22 @@
 		color: #007DFF;
 	}
 
+	#source-github-container
+	{
+		padding: 0px 0px 0px 50px;
+	}
+
+	#source-github-link
+	{
+		font-size: 75px;
+		color: #CCCCCC;
+	}
+
+	#source-github-link:hover
+	{
+		color: #007DFF;
+	}
+
 	#proposal-download-link
 	{
 		font-size: 75px;
@@ -587,7 +603,18 @@
 		padding: 50px 0px 0px 0px;
 	}
 
-	.icon-github
+	#report-download-container
 	{
-		font-size: 30px;
+		text-align: center;
+	}
+
+	#report-download-link
+	{
+		font-size: 75px;
+		color: #CCCCCC;
+	}
+
+	#report-download-link:hover
+	{
+		color: #007DFF;
 	}

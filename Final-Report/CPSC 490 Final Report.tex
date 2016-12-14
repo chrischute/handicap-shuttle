@@ -11,7 +11,7 @@
 \author{\theauthor}
 \title{\thetitle}
 \date{\duedate}
-\usepackage[top=.75in, left=0.5in, right=0.5in, bottom=1.5in]{geometry}
+\usepackage[top=.75in, left=0.7in, right=0.7in, bottom=1.5in]{geometry}
 \usepackage{amsmath, amsthm, amssymb}
 \newtheorem{lem}{Lemma}
 \usepackage{graphicx}
@@ -55,11 +55,10 @@
 \begin{document}
 \maketitle
 \thispagestyle{empty}
-\begin{multicols*}{2}
 \begin{abstract}
     This paper discusses the design and implementation of Wheels, an iOS application for hailing rides on Yale's Special Services Van. The app's objective is to replace its predecessor system for scheduling rides at Yale. In the previous system, users were required to call the Special Services dispatcher and provide the details (time, address, and accessibility requirements) for each ride. This system was inconvenient and had low bandwidth for scheduling rides. People often had to wait on hold for 5-10 minutes before reaching the dispatcher, and pickup locations were often miscommunicated. By contrast, Wheels eliminates waiting for the dispatcher (since many users can schedule rides simultaneously), and ride summaries are accompanied with GPS-based pickup information. The app allows users to quickly schedule rides and view their upcoming itinerary. Moreover, users can request to be picked up at their current GPS location. Wheels synchronizes through Amazon Web Services' (AWS) DynamoDB. All users' rides are stored in a DynamoDB table, and, using AWS Lambda triggers, the dispatcher receives notifications when a ride is scheduled, deleted, or needs to be executed. Users are authenticated using AWS Cognito, where NetIDs are checked against a whitelist maintained by Yale's Resource Office of Disabilities. This backend design was chosen to combine the extensibility of DynamoDB, security of Cognito, and the reliability of AWS in general. In short, Wheels replaces both the rider-dispatcher communication channel and the centralized data store for rides on Yale's Special Services Van. We hope that Wheels will improve the campus experience for all limited-mobility students, staff, and faculty at Yale.
 \end{abstract}
-
+\begin{multicols*}{2}
 \section{Introduction}\label{sec:intro}
 Wheels is an iOS application for scheduling rides on Yale's Special Services Van (``the Van''). The Van provides transportation to handicapped students and employees of Yale. That is, to be eligible to request rides with the Van, a student or employee needs to provide proof of a disability. Once cleared to ride, that person can request curbside transportation between any two points on Yale's campus. The Van operates on a 24-hour basis Monday-Friday, and between 6:00 PM and 7:30 AM on weekends. We note that ``the Van'' refers to the service itself rather than any particular vehicle. There are multiple vans and busses that are used to execute these rides, and they often operate simultaneously.
 
@@ -78,36 +77,36 @@ In the sections that follow, we will describe the design decisions and implement
 \section{User Interface}\label{sec:user-interface}
 The user interface of Wheels is heavily influenced by the iOS design principles published by Apple. In particular, the interface aims to be as minimal as possible while still providing the functionality necessary to schedule rides. There are four main pages: The login view, the Special Services information view, the on-demand request view, and the scheduled rides view.
 \begin{center}
-	\includegraphics[keepaspectratio=true, width=0.35\textwidth]{screenshot-5.png}\\
+	\includegraphics[keepaspectratio=true, width=0.30\textwidth]{screenshot-5.png}\\
 	\textit{Figure 1: Special Services Information View.}
 \end{center}
 
 \subsection{Login and Information Views}
-The login page receives the user's NetID and associated password. An animated login button guards access to the rest of the app. Once verified, the app is a 3-page array of screens arranged in horizontal sequence. The left-most of these three main pages is the Special Services information screen. This screen provides a button to call the dispatcher in case the user does not have an Internet connection. The information screen also presents the Van's hours of service (updated given the day of the week). At the bottom of the information screen are links to the forms for requesting access to the Special Services Van.
+The login page receives the user's NetID and associated password. An animated login button guards access to the rest of the app. Once verified, the app is a 3-page array of screens arranged in horizontal sequence. The user simply swipes horizontally to move between the three pages.
+
+The left-most of these three main pages is the Special Services information screen. This screen provides a button to call the Special Services hotline in case the user needs to speak directly to the dispatcher. The information screen also presents the Van's hours of service (updated given the day of the week). At the bottom of the information screen are links to the forms for requesting access to the Special Services Van. In the upper right-hand corner of the screen, there is a button for accessing the user's settings and logging out.
 
 \subsection{On-Demand Request View}
-The on-demand view is designed for requesting a ride for immediate execution. Since the driver will pick the rider up as soon as possible, an on-demand ride will commonly be requested to the user's current location. As such, the on-demand view is built around a street map that displays the user's current location. At the top of the view are two text fields for the pickup and drop-off addresses. If the user presses the ``current location'' symbol in the lower right-hand corner, the pickup address auto-completes to the user's current location. If the ``Request Ride'' button at the bottom of the screen is then pressed, the user's GPS coordinates will become the pickup address for the ride. Once the user has requested a ride, they will be prompted to select whether they need a wheelchair-accessible van. The ride is initially scheduled for five minutes from the request time, subject to update by the dispatcher.
+The on-demand view is designed for requesting a ride for immediate execution. Since the driver will pick the rider up as soon as possible, an on-demand ride will commonly be requested to the user's current location. As such, the on-demand view is built around a street map that displays the user's current location. At the top of the view are two text fields for the pickup and drop-off addresses.
 \begin{center}
-	\includegraphics[keepaspectratio=true, width=0.33\textwidth]{screenshot-2.png}\\
+	\includegraphics[keepaspectratio=true, width=0.35\textwidth]{screenshot-2.png}\\
 	\textit{Figure 2: On-Demand Request View.}
 \end{center}
-
+If the user presses the ``current location'' symbol in the lower right-hand corner, the pickup address auto-completes to the user's current location. If the ``Request Ride'' button at the bottom of the screen is then pressed, the user's GPS coordinates will become the pickup address for the ride. Once the user has requested a ride, they will be prompted to select whether they need a wheelchair-accessible van. The ride is initially scheduled for five minutes from the request time, subject to update by the dispatcher.
 
 \subsection{Scheduled Rides View}
-The scheduled rides view serves two functions. First, it displays all future rides scheduled by the current user. These rides are summarized in the rows of a table. Each row contains the pickup and drop-off addresses, as well as the scheduled pickup time of the ride. For example, the first row in the following table would be presented to summarize a ride from SSS to Davenport at the specified time:
 \begin{center}
-	%\includegraphics[width=0.45\textwidth]{table-row}
-	\includegraphics[width=0.33\textwidth]{screenshot-3.png}\\
+	\includegraphics[width=0.35\textwidth]{screenshot-3.png}\\
 	\textit{Figure 3: Scheduled Rides View.}
 \end{center}
-To reveal more information about the ride, the user simply taps on the row. This brings up another screen with the pickup address (GPS coordinates if applicable), drop-off address, scheduled time, and accessibility requirements of the ride.
+The scheduled rides view serves two functions. First, it displays all future rides scheduled by the current user. These rides are summarized in the rows of a table. Each row contains the pickup and drop-off addresses, as well as the scheduled pickup time of the ride. For example, the first row in Figure 3 (above) would be presented to summarize a ride from SSS to Davenport at the specified time. To reveal more information about the ride, the user simply taps on the row. This brings up another screen with the pickup address (GPS coordinates if applicable), drop-off address, scheduled time, and accessibility requirements of the ride.
 
 Second, the scheduled ride view serves as the outlet for scheduling rides ahead of time. In the upper right-hand corner of the view, there is a $+$ symbol. By tapping the symbol, the user navigates to a new screen that receives input of the pickup location, drop-off location, date and time, and accessibility requirements of the ride. When the user taps ``Done'', the ride is submitted for approval by the dispatcher, and control is immediately returned to the user. A push notification shows up on the user's screen when their ride has been approved, and it automatically is slotted into the scheduled rides table.
 \section{Local Data Store}\label{sec:local-db}
 Wheels stores its information locally using Core Data, the object-oriented persistent storage solution provided by iOS. With Core Data, the developer constructs ``entities'', collections of attributes which are analogous to table schema. Once the attributes of an entity are defined, XCode will auto-generate a subclass of \texttt{NSManagedObject}, the parent class of all objects stored by Core Data. The resulting subclass can be constructed, manipulated, and destroyed in typical object-oriented fashion above the data tier. Importantly, each in-memory instance gets mapped to persistent storage when the programmer calls the \texttt{save} method on the associated \texttt{NSManagedObjectContext} instance. In this way, consistency is maintained between the persistent and in-memory data stores.
 
 Wheels maintains two entities in its Core Data model: \texttt{ride}s and \texttt{rider}s. A \texttt{ride} has the string attributes \texttt{dateAndTime}, \texttt{fromAddress}, \texttt{toAddress}, and \texttt{guid}; and the boolean attribute \texttt{needsWheelchair}. Each ride has a relationship to a \texttt{rider}, where a \texttt{rider} has the attributes \texttt{netID}, \texttt{password}, and has a many-to-one relationship to a set of \texttt{ride}s called \texttt{scheduledRides}. With this model, all necessary information is stored about each ride, and all information for a given rider can be looked up efficiently.
-\section{Remote Data Store \& Back End}\label{sec:back-end}
+\section{Back End Design}\label{sec:back-end}
 The dispatcher must have a central database of all rides to effectively assign drivers to riders. Thus we needed to design a centralized backend. There are many IaaS offerings that would satisfy Wheels' modest requirements (CRUD, reasonable write throughput, and connection authentication). Of the candidates we considered, Amazon Web Services' (AWS) combination of DynamoDB, Cognito, and Lambda was deemed the most compelling package. Moreover, this package is offered at a very low price for the capacity required by Wheels.
 \subsection{Remote Database: DynamoDB}
 DynamoDB is a NoSQL database service offered by Amazon Web Services. Importantly for Wheels, the pricing model for DynamoDB is based on throughput rather than storage. This is favorable because the Van needs to maintain archives of provided rides, but has relatively low throughput requirements.
@@ -157,6 +156,8 @@ This development of Wheels was motivated by the goal of improving the Special Se
 The Yale Special Services Van (``the Van'') serves the critical function of providing transportation to students, faculty, and staff with limited mobility. In researching this project, we found that most riders were satisfied with the Van but not with the scheduling mechanism. The predecessor system that Wheels aims to replace was flawed in many ways. By asking riders to place a phone call to the dispatcher every time they wanted a ride, the system wasted both riders' and drivers' time. The dispatcher's hotline was often busy, drivers were frequently directed to incorrect addresses, and recurring rides were difficult to request.
 
 Wheels solves each of these problems in turn by providing an easy-to-use iOS interface for requesting rides. By all measurements, Wheels is faster and more reliable for scheduling rides with the Van. Users no longer need to wait on the phone until the dispatcher is available, since Wheels can handle hundreds of requests at a time. Moreover, Wheels adds new features to the Van, including the ability to request rides based on a user's GPS location. Users can view summaries of their upcoming rides, and easily cancel or request new rides. Just as phone-order retailers were replaced by stores which serve their customers via the Web, we believe that riders will heavily favor Wheels' iOS interface and Internet connectivity over phone-based requests.
+\section{Acknowledgments}
+We would like to thank Professor James Aspnes for serving as the advisor to this project. We would also like to thank the Resources Office of Disabilities for answering questions about the Van. Finally, we thank the riders who were surveyed during the first stages of the project, and those who have offered to test the application in the coming months.
 \end{multicols*}
 \end{document}
 

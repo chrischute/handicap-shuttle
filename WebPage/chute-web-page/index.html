@@ -39,7 +39,7 @@ Web design adapted from: <http://templated.co> (Creative Commons License).
 				<h2>Abstract</h2>
 			</div>
 			<p>
-				<strong>Wheels</strong> is an iOS application for scheduling rides with Yale's Special Services Van. The app's objective is to replace its predecessor system for scheduling rides at Yale. In the previous system, users were required to call the Special Services dispatcher and provide the details (time, address, and accessibility requirements) for each ride. This system was inconvenient and had low bandwidth for scheduling rides. People often had to wait on hold for 5-10 minutes before reaching the dispatcher, and pickup locations were often miscommunicated. By contrast, Wheels eliminates waiting for the dispatcher (since many users can schedule rides simultaneously), and rides are presented in an unambiguous summary format with GPS-based pickup information. The app allows users to schedule recurring rides, one-off rides, and view their upcoming rides. Moreover, users can request to be picked up at their current GPS location. Wheels synchronizes through Amazon Web Services' (AWS) DynamoDB. All users' rides are stored in a DynamoDB table, and, using AWS Lambda triggers, the dispatcher receives notifications when a ride is scheduled, deleted, or needs to be executed. Users are authenticated using AWS Cognito, and users are authenticated against a whitelist of Yale NetIDs with Special Services access. This backend design was chosen to combine the extensibility of DynamoDB, security of Cognito, and the reliability of AWS in general. In short, Wheels replaces both the student-dispatcher communication channel and the centralized data store for rides on Yale's Special Services Van. We hope that Wheels will improve the campus experience for injured and handicapped students, staff, and faculty.
+				Wheels is an iOS application for hailing rides on Yale's Special Services Van. The app's objective is to replace its predecessor system for scheduling rides at Yale. In the previous system, users were required to call the Special Services dispatcher and provide the details (time, address, and accessibility requirements) for each ride. This system was inconvenient and had low bandwidth for scheduling rides. People often had to wait on hold for 5-10 minutes before reaching the dispatcher, and pickup locations were often miscommunicated. By contrast, Wheels eliminates waiting for the dispatcher (since many users can schedule rides simultaneously), and ride summaries are accompanied with GPS-based pickup information. The app allows users to quickly schedule rides and view their upcoming itinerary. Moreover, users can request to be picked up at their current GPS location. Wheels synchronizes through Amazon Web Services' (AWS) DynamoDB. All users' rides are stored in a DynamoDB table, and, using AWS Lambda triggers, the dispatcher receives notifications when a ride is scheduled, deleted, or needs to be executed. Users are authenticated using AWS Cognito, where NetIDs are checked against a whitelist maintained by Yale's Resource Office of Disabilities. This backend design was chosen to combine the extensibility of DynamoDB, security of Cognito, and the reliability of AWS in general. In short, Wheels replaces both the rider-dispatcher communication channel and the centralized data store for rides on Yale's Special Services Van. We hope that Wheels will improve the campus experience for all limited-mobility students, staff, and faculty at Yale.
 			</p>
 		</div>
 		<div id="wheels-icon"><a href="#" class="image image-full"><img src="images/wheels-icon.png" alt="" /></a></div>
@@ -66,9 +66,9 @@ Web design adapted from: <http://templated.co> (Creative Commons License).
 		<div class="major">
 			<h2>Final Report</h2>
 		</div>
-		<p>
-			My final report text will go here.
-		</p>
+		<div id="report-download-container">
+            <a href="files/wheels-report.pdf" class="icon icon-download" id="report-download-link" class="download-link"><span></span></a>
+        </div>
 	</div>
 </div>
 <div id="screenshots-wrapper" class="wrapper">
@@ -99,7 +99,14 @@ Web design adapted from: <http://templated.co> (Creative Commons License).
 			<h2>Source Code</h2>
 		</div>
 		<div id="source-download-container">
-			<a href="files/Wheels.zip" class="icon icon-download" id="source-download-link" class="download-link"><span></span></a>
+			<span>
+				<a href="files/wheels-code.zip" class="icon icon-download" id="source-download-link" id="source-download-link"><span></span></a>
+			</span>
+			<span id="source-github-container">
+				<a href="https://github.com/chrischute/handicap-shuttle" class="icon icon-github" id="source-github-link"><span></span></a>
+			</span>
+		</ul>
+	</div>
 		</div>
 	</div>
 </div>
